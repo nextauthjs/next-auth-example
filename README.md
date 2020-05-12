@@ -31,7 +31,7 @@ npm i
 cp example.env .env
 ```
 
-In the devloper area for your oAuth app, you should configure the callback URL to use your website with a callback path of `/api/auth/callback/google` (e.g. `http://localhost:3000/api/auth/callback/google` for Google).
+In the developer area for your oAuth app, you should configure the callback URL to use your website with a callback path of `/api/auth/callback/google` (e.g. `http://localhost:3000/api/auth/callback/google` for Google).
 
 A list of configured providers and their callback URLs is avalible from the endpoint `/api/auth/providers`.
 

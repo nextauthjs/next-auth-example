@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 import Adapters from 'next-auth/adapters'

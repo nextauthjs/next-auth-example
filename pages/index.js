@@ -23,6 +23,7 @@ export default ({ serverSession }) => {
           padding: 1em; .5em;
           border-radius: .5em;
           font-size: 1.1em;
+          overflow-x: hidden;
         }
       `}</style>
       <h1>NextAuth 2.0 Example</h1>

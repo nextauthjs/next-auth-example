@@ -8,7 +8,7 @@ export default ({ serverSession }) => {
   <div className='main'>
     <style jsx>{`
         .main {
-          padding: 1rem 2em;
+          padding: 1rem 1.5em;
         }
         h1,h2,h3,p,li {
           font-family: Helvetica, sans-serif;
@@ -16,7 +16,7 @@ export default ({ serverSession }) => {
         }
         h1 {
           margin: 0;
-          font-size: 3rem;
+          font-size: 2.5rem;
           line-height: 3rem;
           font-weight: 300;
         }
@@ -25,7 +25,7 @@ export default ({ serverSession }) => {
         }
         .lead {
           font-size: 1.2rem;
-          line-height: 1.4rem;
+          line-height: 1.8rem;
           font-weight: 400;
         }
         pre {
@@ -37,7 +37,7 @@ export default ({ serverSession }) => {
           overflow-x: hidden;
         }
       `}</style>
-      <h1>NextAuth 2.0 Example</h1>
+      <h1>NextAuth Example</h1>
       <p className="lead">
         This is an example project that uses <a href={`https://www.npmjs.com/package/next-auth/v/beta`}>next-auth@beta</a>,
         see the <a href="https://github.com/iaincollins/next-auth/issues/99">NextAuth 2.0 announcement</a> for details
@@ -57,7 +57,7 @@ export default ({ serverSession }) => {
         <li><a href="/api/auth/error">/api/auth/error</a></li>
       </ul>
       <p>
-        NextAuth 2.0  comes with lightweight, unbranded pages to handle sign in, sign out and errors (powered by <a href="https://preactjs.com/">Preact</a>).
+        NextAuth 2.0 comes with lightweight, unbranded pages to handle sign in, sign out and errors (powered by <a href="https://preactjs.com/">Preact</a>).
       </p>
       <p>
         Both the default path (/api/auth/*) and all pages (including error pages) can be customised so that you can create a fully branded experience.
@@ -69,7 +69,7 @@ export default ({ serverSession }) => {
       <pre>{JSON.stringify(clientSession, null, 2)}</pre>
       <p>
         <em>
-          Usualy client side rendering inherits session data from the server if you are using server side rendering on a page.
+          Client side rendering normally inherits session data from the the server render during page hydration, if you are using server side rendering on a page.
           This example this page does not, so that you can more easily observe session data being loaded via the `useSession()` hook.
         </em>
       </p>

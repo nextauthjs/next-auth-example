@@ -46,7 +46,7 @@ export default ({ serverSession }) => {
       <p>
         <b>NextAuth 2.0</b> provides a complete, secure API for handling sign and sessions in via Email and/or oAuth (v1 &amp; v2).
       </p>
-      <p>It is built for <b><a href="https://now.sh">Serverless</a></b> deployments with <b><a href="https://nextjs.org">Next.js</a></b>, but is compatible with Docker and other front end frameworks.</p>
+      <p>It is built for <b><a href="https://now.sh">Serverless</a></b> deployments with <b><a href="https://nextjs.org">Next.js</a></b> (but can be used with other frameworks).</p>
       <ul>
         <li><a href="/api/auth/signin">/api/auth/signin</a></li>
         <li><a href="/api/auth/signout">/api/auth/signout</a></li>

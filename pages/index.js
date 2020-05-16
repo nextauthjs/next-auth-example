@@ -37,7 +37,7 @@ export default ({ serverSession }) => {
           overflow-x: hidden;
         }
       `}</style>
-      <h1>NextAuth 2.0 Example</h1>
+      <h1>NextAuth Example</h1>
       <p className="lead">
         This is an example project that uses <a href={`https://www.npmjs.com/package/next-auth/v/beta`}>next-auth@beta</a>,
         see the <a href="https://github.com/iaincollins/next-auth/issues/99">NextAuth 2.0 announcement</a> for details
@@ -57,7 +57,7 @@ export default ({ serverSession }) => {
         <li><a href="/api/auth/error">/api/auth/error</a></li>
       </ul>
       <p>
-        NextAuth 2.0  comes with lightweight, unbranded pages to handle sign in, sign out and errors (powered by <a href="https://preactjs.com/">Preact</a>).
+        NextAuth 2.0 comes with lightweight, unbranded pages to handle sign in, sign out and errors (powered by <a href="https://preactjs.com/">Preact</a>).
       </p>
       <p>
         Both the default path (/api/auth/*) and all pages (including error pages) can be customised so that you can create a fully branded experience.

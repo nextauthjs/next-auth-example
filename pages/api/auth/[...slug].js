@@ -8,7 +8,7 @@ const adapater = {
   type: 'sqlite',
   database: ':memory:',
 
-  // Synchronize schema with database
+  // Synchronize schema with database (automatically creates tables/collections)
   // Use in development or on first run only; may result in data loss!
   synchronize: true 
 }
@@ -17,9 +17,13 @@ const options = {
   site: process.env.SITE,
   providers: [
     Providers.Email({
-      server: process.env.EMAIL_SERVER,
-      from: process.env.EMAIL_FROM
+      // Configure with an SMTP connection string or an object for nodemailer https://nodemailer.com/
+      server: process.env.EMAIL_SERVER, 
+      // Email services often only allow sending email from a valid/verified address
+      from: process.env.EMAIL_FROM,
     }),
+    // When configuring oAuth providers you will need to make sure you get permission to request
+    // the users email address to be able to verify their identity
     Providers.Twitter({
       clientId: process.env.TWITTER_ID,
       clientSecret: process.env.TWITTER_SECRET

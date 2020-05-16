@@ -2,7 +2,9 @@
 
 ## About NextAuth Example
 
-This is an example of how to use [NextAuth v2](https://www.npmjs.com/package/next-auth) in a [Next.js](https://nextjs.org) app. It comes with a [TypeORM configuration](https://github.com/typeorm/typeorm/blob/master/docs/using-ormconfig.md) in `adapater.config.js` for an SQLlite in-memory database.
+This is an example of how to use [NextAuth v2](https://www.npmjs.com/package/next-auth) in a [Next.js](https://nextjs.org) app.
+
+It comes with a [TypeORM configuration](https://github.com/typeorm/typeorm/blob/master/docs/using-ormconfig.md) in `adapater.config.js` for an SQLlite in-memory database.
 
 * [NextAuth v2 Announcement](https://github.com/iaincollins/next-auth/issues/99)
 * [How to clone / contribute](https://github.com/iaincollins/next-auth/issues/105)

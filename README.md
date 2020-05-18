@@ -51,3 +51,10 @@ To run it it production mode, use:
 npm build
 npm start
 ```
+
+Note: You will also need environment variables set up in your production environment.
+
+To do this in `now.sh` you can use the `now env` command:
+
+    now env add GOOGLE_ID production
+    now env add GOOGLE_SECRET production

@@ -4,12 +4,13 @@ import Adapters from 'next-auth/adapters'
 
 // Default adapater uses TypeORM; see TypeORM documentation for options
 // https://github.com/typeorm/typeorm/blob/master/docs/using-ormconfig.md
-const adapater = {
+//
+// The `synchronize: true` option automatically creates tables/collections.
+// You should use this in development or on first run only as it may result
+// in data loss if used in production.
+const database = {
   type: 'sqlite',
   database: ':memory:',
-
-  // Synchronize schema with database (automatically creates tables/collections)
-  // Use in development or on first run only; may result in data loss!
   synchronize: true 
 }
 
@@ -24,13 +25,17 @@ const options = {
     }),
     // When configuring oAuth providers you will need to make sure you get permission to request
     // the users email address to be able to verify their identity
-    Providers.Twitter({
-      clientId: process.env.TWITTER_ID,
-      clientSecret: process.env.TWITTER_SECRET
-    }),
     Providers.Google({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET
+    }),
+    Providers.Facebook({
+      clientId: process.env.FACEBOOK_ID,
+      clientSecret: process.env.FACEBOOK_SECRET
+    }),
+    Providers.Twitter({
+      clientId: process.env.TWITTER_ID,
+      clientSecret: process.env.TWITTER_SECRET
     }),
     Providers.GitHub({
       clientId: process.env.GITHUB_ID,
@@ -41,7 +46,7 @@ const options = {
       clientSecret: process.env.TWITCH_SECRET
     }),
   ],
-  adapter: Adapters.Default(adapater),
+  adapter: Adapters.Default(database),
 }
 
 export default (req, res) => NextAuth(req, res, options)

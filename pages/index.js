@@ -1,14 +1,18 @@
 import NextAuth from 'next-auth/client'
 
-export default ({ serverSession }) => {
-  // The useSession() hook is the easiest way to get a session
-  const [ clientSession, loading] = NextAuth.useSession()
+export default ({ session }) => {
+  // The useSession() hook is the best way to get a session client side.
+  //
+  // This example uses the NextAuth.Provider, so we don't actually need to pass 
+  // the session to useSession() here, as _app.js is configured so that page
+  // will inherit it from the 'session' prop returned by getServerSideProps()
+  const [ clientSession, loading] = NextAuth.useSession(session)
   
   return (
   <div className='main'>
     <style jsx>{`
         .main {
-          padding: 1rem 1.5em;
+          padding: 1rem 2em;
         }
         h1,h2,h3,p,li {
           font-family: Helvetica, sans-serif;
@@ -16,7 +20,7 @@ export default ({ serverSession }) => {
         }
         h1 {
           margin: 0;
-          font-size: 2.5rem;
+          font-size: 3rem;
           line-height: 3rem;
           font-weight: 300;
         }
@@ -25,7 +29,7 @@ export default ({ serverSession }) => {
         }
         .lead {
           font-size: 1.2rem;
-          line-height: 1.8rem;
+          line-height: 1.4rem;
           font-weight: 400;
         }
         pre {
@@ -37,7 +41,7 @@ export default ({ serverSession }) => {
           overflow-x: hidden;
         }
       `}</style>
-      <h1>NextAuth Example</h1>
+      <h1>NextAuth 2.0 Example</h1>
       <p className="lead">
         This is an example project that uses <a href={`https://www.npmjs.com/package/next-auth/v/beta`}>next-auth@beta</a>,
         see the <a href="https://github.com/iaincollins/next-auth/issues/99">NextAuth 2.0 announcement</a> for details
@@ -46,7 +50,7 @@ export default ({ serverSession }) => {
       <p>
         <b>NextAuth 2.0</b> provides a complete, secure API for handling sign and sessions in via Email and/or oAuth (v1 &amp; v2).
       </p>
-      <p>It is built for <b><a href="https://now.sh">Serverless</a></b> deployments with <b><a href="https://nextjs.org">Next.js</a></b> (but can be used with other frameworks).</p>
+      <p>It is built for <b><a href="https://now.sh">Serverless</a></b> deployments with <b><a href="https://nextjs.org">Next.js</a></b>, but is compatible with Docker and other front end frameworks.</p>
       <ul>
         <li><a href="/api/auth/signin">/api/auth/signin</a></li>
         <li><a href="/api/auth/signout">/api/auth/signout</a></li>
@@ -57,21 +61,18 @@ export default ({ serverSession }) => {
         <li><a href="/api/auth/error">/api/auth/error</a></li>
       </ul>
       <p>
-        NextAuth 2.0 comes with lightweight, unbranded pages to handle sign in, sign out and errors (powered by <a href="https://preactjs.com/">Preact</a>).
+        NextAuth 2.0  comes with lightweight, unbranded pages to handle sign in, sign out and errors (powered by <a href="https://preactjs.com/">Preact</a>).
       </p>
       <p>
         Both the default path (/api/auth/*) and all pages (including error pages) can be customised so that you can create a fully branded experience.
       </p>
       <h2>Session</h2>
-      <h3>Server Side Session</h3>
-      <pre>{JSON.stringify(serverSession, null, 2)}</pre>
-      <h3>Client Side Session</h3>
+      <h3>Server</h3>
+      <pre>{JSON.stringify(session, null, 2)}</pre>
+      <h3>Client</h3>
       <pre>{JSON.stringify(clientSession, null, 2)}</pre>
       <p>
-        <em>
-          Client side rendering normally inherits session data from the the server render during page hydration, if you are using server side rendering on a page.
-          This example this page does not, so that you can more easily observe session data being loaded via the `useSession()` hook.
-        </em>
+        <em>Client side rendering inherits session data from the server if you are using server side rendering on a page.</em>
       </p>
       <h2>Notes</h2>
       <ul>
@@ -90,17 +91,17 @@ export default ({ serverSession }) => {
   )
 }
 
-// If you want to make a session avalible when server side rendering
-// you can get the current a session using NextAuth.session({req})
-// and return the result in getServerSideProps().
+// If you want to make a session avalible when server side rendering you can get
+// the session using NextAuth.session({req}) and return the it as prop from 
+// getServerSideProps() or getInitialProps()
 //
-// You can also call NextAuth.session() in getInitialProps() in _app.js
-// if you want all pages to be able access sessions when server side
-// rendering, but this will disable static generation for all pages.
+// You can also call NextAuth.session() in getInitialProps() in _app.js if you
+// want all pages on your site to be able access sessions when server side
+// rendering, but that will prevent static generation of all pages on your site
 export async function getServerSideProps({req}) {
   return {
     props: {
-      serverSession: await NextAuth.session({req})
+      session: await NextAuth.session({req})
     }
   }
 }

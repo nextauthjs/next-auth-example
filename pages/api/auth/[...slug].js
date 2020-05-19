@@ -47,6 +47,14 @@ const options = {
     }),
   ],
   adapter: Adapters.Default(database),
+  //
+  // The above configuration is all that's required, however you can easily 
+  // configure session behaviour using options (shown here with default values).
+  //
+  // sessionMaxAge: 30*60*60*1000, // Expire sessions after 30 days of being idle
+  // sessionUpdateAge: 24*60*60*1000, // Update session expiry only if session was updated more recently than the last 24 hours
+  // verificationMaxAge: 24*60*60*1000, // Expire erification links (for email sign in) after 24 hours
+  // debug: false // Set to true to enable debug messages to be displayed
 }
 
 export default (req, res) => NextAuth(req, res, options)

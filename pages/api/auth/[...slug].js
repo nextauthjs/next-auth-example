@@ -1,18 +1,5 @@
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
-import Adapters from 'next-auth/adapters'
-
-// Default adapater uses TypeORM; see TypeORM documentation for options
-// https://github.com/typeorm/typeorm/blob/master/docs/using-ormconfig.md
-//
-// The `synchronize: true` option automatically creates tables/collections.
-// You should use this in development or on first run only as it may result
-// in data loss if used in production.
-const database = {
-  type: 'sqlite',
-  database: ':memory:',
-  synchronize: true 
-}
 
 const options = {
   site: process.env.SITE,
@@ -46,8 +33,21 @@ const options = {
       clientSecret: process.env.TWITCH_SECRET
     }),
   ],
-  adapter: Adapters.Default(database),
+  // Database configuration can be a JavaScript object or database connection
+  // string. By default, NextAuth loads TypeORM which is compatible with MySQL,
+  // Postgres, MongoDB and other popular SQL and noSQL databases.
+  // You can also specify a custom adapter if TypeORM doesn't meet your needs.
   //
+  // This example configuration is for an SQLite in-memory database. For options
+  // see https://github.com/typeorm/typeorm/blob/master/docs/using-ormconfig.md
+  database: {
+    type: 'sqlite',
+    database: ':memory:',
+    // The `synchronize: true` option automatically creates tables/collections.
+    // You should use this in development or on first run only as it may result
+    // in data loss if used in production.
+    synchronize: true
+  }
   // The above configuration is all that's required, however you can easily 
   // configure session behaviour using options (shown here with default values).
   //

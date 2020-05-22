@@ -1,21 +1,21 @@
-# NextAuth Example
+# NextAuth.js Example
 
 https://next-auth-example.now.sh
 
-## About NextAuth Example
+## About NextAuth.js Example
 
-This is an example of how to use NextAuth v2 library to add authenticaiton to a website created with [Next.js](https://nextjs.org).
+This is an example of how to use NextAuth.js library to add authentication to a [Next.js](https://nextjs.org) application.
 
-NextAuth v2 is very easy to implement, full-stack (client/server) open source authentication library designed for [Serverless](https://now.sh) and [Next.js](https://nextjs.org) (but can be used with other frameworks).
+NextAuth.js is very easy to implement, full-stack (client/server) open source authentication library designed for [Serverless](https://now.sh) and [Next.js](https://nextjs.org) (but can be used with other frameworks).
 
-* [NextAuth v2 Announcement](https://github.com/iaincollins/next-auth/issues/99)
+* [NextAuth.js v2.0 Announcement](https://github.com/iaincollins/next-auth/issues/99)
 * [How to clone / contribute to NextAuth](https://github.com/iaincollins/next-auth/issues/105)
 
 ## Beta Software
 
-**NextAuth v2 is beta software and is not ready for production use.**
+**NextAuth.js v2 is beta software and is not ready for production use.**
 
-*NextAuth is designed for Next.js, it is not associated with Next.js or Vercel.*
+*NextAuth.js is not associated with Vercel or Next.js.*
 
 ## Getting Started
 

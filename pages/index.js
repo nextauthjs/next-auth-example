@@ -1,12 +1,12 @@
 import Link from 'next/link'
-import NextAuth from 'next-auth/client'
 import Header from '../components/header'
 
-export default ({ session }) => (
+export default () => (
   <main>
     <h1>NextAuth.js Example</h1>
     <Header/>
     <ul>
+      <li><Link href="/"><a>Home</a></Link></li>
       <li><Link href="/example-page-1"><a>Example Page 1</a></Link></li>
       <li><Link href="/example-page-2"><a>Example Page 2</a></Link></li>
     </ul>
@@ -17,15 +17,7 @@ export default ({ session }) => (
       See <a href="https://next-auth.js.org">next-auth.js.org</a> for more information and documentation.
     </p>
     <p>
-      You can <a href="https://github.com/iaincollins/next-auth-example">view source for this project</a> on GitHub.
+      <a href="https://github.com/iaincollins/next-auth-example">View source on GitHub</a>
     </p>
   </main>
 )
-
-export async function getServerSideProps({req}) {
-  return {
-    props: {
-      session: await NextAuth.session({req})
-    }
-  }
-}

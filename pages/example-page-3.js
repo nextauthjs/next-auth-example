@@ -4,7 +4,7 @@ import Header from '../components/header'
 
 const Page = ({session}) => (
   <main>
-    <h1>Example Page 2</h1>
+    <h1>Example Page 3</h1>
     <Header/>
     <ul>
       <li><Link href="/"><a>Home</a></Link></li>
@@ -13,7 +13,7 @@ const Page = ({session}) => (
       <li><Link href="/example-page-3"><a>Example Page 3</a></Link></li>
     </ul>
     <p>
-      This page uses the universal <strong>NextAuth.session()</strong> method in <strong>getServerSideProps()</strong>.
+      This page uses the universal <strong>NextAuth.session()</strong> method in <strong>getInitialProps()</strong>.
     </p>
     <p>
       The <strong>session()</strong> method supports both client and server side rendering.
@@ -23,16 +23,14 @@ const Page = ({session}) => (
       Server side page rendering is slower than client side rendering.
     </p>
     <p>
-      <strong>getServerSideProps()</strong> is the recommended method to use for server side rendering.
+      As <strong>session()</strong> is called in <strong>getInitialProps()</strong> it will always update in the client on every page load.
     </p>
   </main>
 )
 
-export async function getServerSideProps(context) {
+Page.getInitialProps = async (context) => {
   return {
-    props: {
-      session: await NextAuth.session(context)
-    }
+    session: await NextAuth.session(context)
   }
 }
 

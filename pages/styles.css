@@ -5,3 +5,15 @@ body {
   max-width: 680px;
   margin: 0 auto;
 }
+
+h4 {
+  margin-bottom: .5rem;
+}
+
+ul {
+  margin-bottom: 2rem;
+}
+
+a {
+  font-weight: 500;
+}

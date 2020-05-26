@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth/client'
+import { Provider } from 'next-auth/client'
 import './styles.css'
 
 // Using the NextAuth Provider in _app.js is  optional, but improves performance 
@@ -6,8 +6,8 @@ import './styles.css'
 export default ({ Component, pageProps }) => {
   const { session } = pageProps
   return (
-    <NextAuth.Provider session={session}>
+    <Provider session={session}>
       <Component {...pageProps} />
-    </NextAuth.Provider>
+    </Provider>
   )
 }

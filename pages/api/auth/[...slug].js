@@ -5,13 +5,13 @@ const options = {
   site: process.env.SITE,
   providers: [
     Providers.Email({
-      // Configure with an SMTP connection string or an object for nodemailer https://nodemailer.com/
+      // SMTP connection string or nodemailer configuration object https://nodemailer.com/
       server: process.env.EMAIL_SERVER, 
       // Email services often only allow sending email from a valid/verified address
       from: process.env.EMAIL_FROM,
     }),
-    // When configuring oAuth providers you will need to make sure you get permission to request
-    // the users email address to be able to verify their identity
+    // When configuring oAuth providers make sure you enabling requesting
+    // permission to get the users email address (required to sign in)
     Providers.Google({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET
@@ -27,32 +27,20 @@ const options = {
     Providers.GitHub({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET
-    }),
-    Providers.Twitch({
-      clientId: process.env.TWITCH_ID,
-      clientSecret: process.env.TWITCH_SECRET
-    }),
+    })
   ],
-  // The 'database' option should be a TypeORM configuration object
-  // https://typeorm.io/#/connection-options
+  // The 'database' option should be a connection string or TypeORM
+  // configuration object https://typeorm.io/#/connection-options
   //
-  // Note: You will need to install the appropriate node_module!
-  database: {
-    type: process.env.DATABASE_TYPE, // e.g. mysql | postgres | mongodb | sqlite
-    host: process.env.DATABASE_HOST,
-    port: process.env.DATABASE_PORT,
-    username: process.env.DATABASE_USERNAME,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE_NAME,
-    synchronize: true // Automatically sync DB schema. Do not use in production.
-  },
+  // Note: You need to install an appropriate node_module for your database
+  database: process.env.DATABASE_URL,
 
   // Additional options
   //
+  // secret: 'abcdef123456789' // Recommended. Used to encode data and to sign cookies. Auto-generated if not specified.
   // sessionMaxAge: 30*24*60*60*1000, // Expire sessions after 30 days of being idle
   // sessionUpdateAge: 24*60*60*1000, // Update session expiry only if session was updated more recently than the last 24 hours
   // verificationMaxAge: 24*60*60*1000, // Expire verification links (for email sign in) after 24 hours
-  //
   // debug: true, // Use this option to enable debug messages in the console
 }
 

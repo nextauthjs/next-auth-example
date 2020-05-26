@@ -1,24 +1,25 @@
 # NextAuth.js Example
 
-https://next-auth-example.now.sh
+[next-auth-example.now.sh](https://next-auth-example.now.sh)
 
-## About NextAuth.js Example
+## About This Project
 
 This is an example of how to use NextAuth.js library to add authentication to a [Next.js](https://nextjs.org) application.
 
-NextAuth.js is an easy to implement, full-stack (client/server) open source authentication library designed for [Serverless](https://now.sh) and [Next.js](https://nextjs.org).
-
-See [NextAuth.js v2.0 Announcement](https://github.com/iaincollins/next-auth/issues/99) for updates.
-
-*NextAuth.js is not associated with Vercel or Next.js.*
-
-## Beta Software
+## About NextAuth.js
 
 **NextAuth.js v2 is beta software and is not ready for production use yet.**
 
+NextAuth.js is an easy to implement, full-stack (client/server) open source authentication library designed for [Next.js](https://nextjs.org) and [Serverless](https://now.sh).
+
+* Go to [next-auth.js.org](https://next-auth.js.org) for documentation
+* Go to [NextAuth.js v2 Announcement](https://github.com/iaincollins/next-auth/issues/99) for more information about the release of NextAuth.js v2
+
+*NextAuth.js is not associated with Vercel or Next.js.*
+
 ## Getting Started
 
-1. Clone the repository and install dependancies.
+### 1. Clone the repository and install dependancies
 
 ```
 git clone https://github.com/iaincollins/next-auth-example.git
@@ -26,34 +27,72 @@ cd next-auth-example
 npm i
 ```
 
-2. Copy `example.env` to `.env` and add details for one or more providers.
+### 2. Copy `example.env` to `.env`
+
+Add details for one or more providers (e.g. Google, Twitter, GitHub, Email, etc).
 
 ```
 cp example.env .env
 ```
 
-When configuring your database, you should also install an appropriate node_module.
+When configuring your database you should also install an appropriate node_module.
 
 e.g.
 
-* For SQLite (type: 'sqlite'): `npm i sqlite3`
-* For MySQL (type: 'mysql'): `npm i mysql`
-* For Postgres (type: 'P'): `npm i pg`
-* For MongoDB (type: 'mongodb'): `npm i mongo`
+* **SQLite**
 
-_The example .env specifies an in-memory sqlite database that does not persist data._
+  Install module:
+  `npm i sqlite3`
 
-3. Configure authentication providers in `pages/api/auth/[...slug.js]`
+  Database URI:
+  `sqlite://localhost/:memory:?synchronize=true`
 
-In the developer admin page for each of your OAuth services, you should configure the callback URL to use a callback path of `{your server}/api/auth/callback/{provider}`.
+* **MySQL**
 
-e.g. For Google: `http://localhost:3000/api/auth/callback/google`
+  Install module:
+  `npm i mysql`
 
-A list of configured providers and their callback URLs is avalible from the endpoint `/api/auth/providers`.
+  Database URI:
+  `mysql://username:password@127.0.0.1:3306/database_name?synchronize=true`
 
-You can also choose to configure an SMTP server for passwordless / magic link sign in via email.
+* **Postgres**
 
-3. To run your site locally, use:
+  Install module:
+  `npm i pg`
+
+  Database URI:
+  `postgres://username:password@127.0.0.1:5432/database_name?synchronize=true`
+
+* **MongoDB**
+
+  Install module:
+  `npm i mongo`
+
+  Database URI:
+  `mongodb://username:password@127.0.0.1:27017/database_name?synchronize=true`
+
+Notes:
+
+* The example .env specifies an in-memory SQLite database that does not persist data.
+* SQLite is suitable for development / testing but not for production.
+* The option `?synchronize=true` automatically syncs schema changes to the database. It should not be used in production as may result in data loss if there are changes to the schema or to NextAuth.js
+* You can also specify a [TypeORM connection object](https://typeorm.io/#/connection-options) in `pages/api/auth/[...slug.js]` instead of a database URL / connection string.
+
+### 3. Configure authentication providers
+
+* Review and update options in `pages/api/auth/[...slug.js]` as needed.
+
+* When setting up OAUTH, in the developer admin page for each of your OAuth services, you should configure the callback URL to use a callback path of `{your server}/api/auth/callback/{provider}`.
+
+  e.g. For Google: `http://localhost:3000/api/auth/callback/google`
+
+  A list of configured providers and their callback URLs is available from the endpoint `/api/auth/providers`. You can find more information at https://next-auth.js.org/providers
+
+* You can also choose to specify an SMTP server for passwordless sign in via email.
+
+### 4. Start the application
+
+To run your site locally, use:
 
 ```
 npm run dev
@@ -70,11 +109,6 @@ Note: You will also need environment variables set up in your production environ
 
 To do this in `now.sh` you can use the `now env` command:
 
-    now env add DATABASE_TYPE production
-    now env add DATABASE_HOST production
-    now env add DATABASE_PORT production
-    now env add DATABASE_USERNAME production
-    now env add DATABASE_PASSWORD production
-    now env add DATABASE_NAME production
+    now env add DATABASE_URL production
 
 Before deploying to production, be sure to set environment variables for the ID and Secrets for all your authentication providers.

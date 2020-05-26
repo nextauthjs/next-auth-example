@@ -1,36 +1,29 @@
-import Link from 'next/link'
-import NextAuth from 'next-auth/client'
+import { session } from 'next-auth/client'
 import Header from '../components/header'
 
 const Page = ({session}) => (
   <main>
     <h1>Example Page 3</h1>
     <Header/>
-    <ul>
-      <li><Link href="/"><a>Home</a></Link></li>
-      <li><Link href="/example-page-1"><a>Example Page 1</a></Link></li>
-      <li><Link href="/example-page-2"><a>Example Page 2</a></Link></li>
-      <li><Link href="/example-page-3"><a>Example Page 3</a></Link></li>
-    </ul>
     <p>
-      This page uses the universal <strong>NextAuth.session()</strong> method in <strong>getInitialProps()</strong>.
+      This page uses the universal <strong>session()</strong> method in <strong>getInitialProps()</strong>.
     </p>
     <p>
-      The <strong>session()</strong> method supports both client and server side rendering.
+      <strong>getInitialProps()</strong> is called on every page render, both when pages are rendered on the server and when they are rendered client side.
+      If you are not using the React Hook, you could use this approach, however using <strong>getServerSideProps()</strong> instead is recommended. 
     </p>
     <p>
-      Because this page also supports server side rendering, it does not require JavaScript in the browser.
-      Server side page rendering is slower than client side rendering.
+      Server side page rendering is not as fast as client side rendering, so any page that uses this approach will be slower than a page that only uses the React Hook.
     </p>
     <p>
-      As <strong>session()</strong> is called in <strong>getInitialProps()</strong> it will always update in the client on every page load.
+      This page does not require JavaScript in the browser to know if you are signed in.
     </p>
   </main>
 )
 
 Page.getInitialProps = async (context) => {
   return {
-    session: await NextAuth.session(context)
+    session: await session(context)
   }
 }
 

@@ -1,29 +1,22 @@
-import Link from 'next/link'
-import NextAuth from 'next-auth/client'
+import { session } from 'next-auth/client'
 import Header from '../components/header'
 
 const Page = ({session}) => (
   <main>
     <h1>Example Page 2</h1>
     <Header/>
-    <ul>
-      <li><Link href="/"><a>Home</a></Link></li>
-      <li><Link href="/example-page-1"><a>Example Page 1</a></Link></li>
-      <li><Link href="/example-page-2"><a>Example Page 2</a></Link></li>
-      <li><Link href="/example-page-3"><a>Example Page 3</a></Link></li>
-    </ul>
     <p>
-      This page uses the universal <strong>NextAuth.session()</strong> method in <strong>getServerSideProps()</strong>.
+      This page uses the universal <strong>session()</strong> method in <strong>getServerSideProps()</strong>.
     </p>
     <p>
-      The <strong>session()</strong> method supports both client and server side rendering.
+      Using <strong>session()</strong> in <strong>getServerSideProps()</strong> is the recommended approach if you need to
+      support server side rendering with authentication.
     </p>
     <p>
-      Because this page also supports server side rendering, it does not require JavaScript in the browser.
-      Server side page rendering is slower than client side rendering.
+      Server side page rendering is not as fast as client side rendering, so any page that uses this approach will be slower than a page that only uses the React Hook.
     </p>
     <p>
-      <strong>getServerSideProps()</strong> is the recommended method to use for server side rendering.
+      This page does not require JavaScript in the browser to know if you are signed in.
     </p>
   </main>
 )
@@ -31,7 +24,7 @@ const Page = ({session}) => (
 export async function getServerSideProps(context) {
   return {
     props: {
-      session: await NextAuth.session(context)
+      session: await session(context)
     }
   }
 }

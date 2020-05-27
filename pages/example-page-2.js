@@ -1,10 +1,11 @@
 import { session } from 'next-auth/client'
-import Header from '../components/header'
+import Nav from '../components/nav'
 
 const Page = ({session}) => (
   <main>
     <h1>Example Page 2</h1>
-    <Header/>
+    <Nav/>
+    <h2>About this page</h2>
     <p>
       This page uses the universal <strong>session()</strong> method in <strong>getServerSideProps()</strong>.
     </p>

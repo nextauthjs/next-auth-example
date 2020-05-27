@@ -1,9 +1,10 @@
-import Header from '../components/header'
+import Nav from '../components/nav'
 
 export default () => (
   <main>
     <h1>Example Page 1</h1>
-    <Header/>
+    <Nav/>
+    <h2>About this page</h2>
     <p>
       This page uses the <strong>useSession()</strong> React Hook in the <strong>&lt;/Header&gt;</strong> component.
     </p>

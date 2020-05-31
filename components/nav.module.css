@@ -1,0 +1,66 @@
+.loading,
+.loaded {
+  position: relative;
+  top: 0;
+  opacity: 1;
+  overflow: auto;
+  border-radius: 0 0 .6rem .6rem;
+  padding: .4rem .8rem;
+  margin: 0;
+  background-color: #f5f5f5;
+  transition: all 0.2s ease-in-out;
+}
+
+.loading {
+  top: -2rem;
+  opacity: 0;
+}
+
+.text {
+  padding: .6rem 0 .4rem 0;
+  float: left;
+}
+
+.signinButton,
+.signoutButton {
+  float: right;
+  margin-right: -.4rem;
+  font-weight: 600;
+  background-color: #1eb1fc;
+  color: #fff;
+  border: 2px solid #1eb1fc;
+  border-radius: 8rem;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1rem;
+  padding: .6rem 1rem;
+}
+
+.signinButton:hover {
+  background-color: #1b9fe2;
+  border-color: #1b9fe2;
+  color: #fff;
+}
+
+.signoutButton {
+  background-color: #fff;
+  border-color: #ccc;
+  color: #888;
+}
+
+.signoutButton:hover {
+  background-color: #fff;
+  border-color: #bbb;
+  color: #333;
+}
+
+.navigation {
+  margin-bottom: 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.navigationItem {
+  display: inline-block;
+  margin-right: 1rem;
+}

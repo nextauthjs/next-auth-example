@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "next": "^9.4.0",
-    "next-auth": "^2.0.0-beta.55",
+    "next-auth": "^2.0.0-beta.56",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "sqlite3": "^4.2.0"

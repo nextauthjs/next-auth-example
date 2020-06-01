@@ -13,7 +13,7 @@ export default () => {
   return (
     <nav>
       <noscript>
-        <style>{`.nojs-show { display: block; opacity: 1; top: 0; }`}</style>
+        <style>{`.nojs-show { opacity: 1; top: 0; }`}</style>
       </noscript>
       <p className={`nojs-show ${(!session && loading) ? styles.loading : styles.loaded}`}>
       {!session && <>

@@ -5,7 +5,7 @@ export default () => (
     <hr/>
     <ul className={styles.navigation}>
       <li className={styles.navigationItem}><a href="https://github.com/iaincollins/next-auth-example">Source</a></li>
-      <li className={styles.navigationItem}><a href="https://next-auth.js.org">NextAuth.js Documentation</a></li>
+      <li className={styles.navigationItem}><a href="https://next-auth.js.org">Documentation</a></li>
     </ul>
   </div>
 )

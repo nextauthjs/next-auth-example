@@ -66,7 +66,7 @@ e.g.
 * **MongoDB**
 
   Install module:
-  `npm i mongo`
+  `npm i mongodb`
 
   Database URI:
   `mongodb://username:password@127.0.0.1:27017/database_name?synchronize=true`

@@ -35,6 +35,9 @@ const options = {
   // Note: You need to install an appropriate node_module for your database
   database: process.env.DATABASE_URL,
 
+  // Use JSON Web Tokens instead of database sessions
+  jwt: true,
+
   // Additional options
   //
   // secret: 'abcdef123456789' // Recommended. Used to encode data and to sign cookies. Auto-generated if not specified.

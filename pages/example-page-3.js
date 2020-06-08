@@ -1,4 +1,4 @@
-import { session } from 'next-auth/client'
+import { getSession } from 'next-auth/client'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
 
@@ -8,11 +8,10 @@ const Page = ({session}) => (
     <main>
       <h1>Example Page 3</h1>
       <p>
-        This page uses the universal <strong>session()</strong> method in <strong>getInitialProps()</strong>.
+        This page uses the universal <strong>getSession()</strong> method in <strong>getInitialProps()</strong>.
       </p>
       <p>
-        <strong>getInitialProps()</strong> is called on every page render, both when pages are rendered on the server and when they are rendered client side.
-        If you are not using the React Hook, you could use this approach, however using <strong>getServerSideProps()</strong> instead is recommended. 
+        When using <strong>getInitialProps()</strong> it is called on every page render, both when pages are rendered on the server and when they are rendered client side.
       </p>
       <p>
         Server side page rendering is not as fast as client side rendering, so any page that uses this approach will be slower than a page that only uses the React Hook.
@@ -27,7 +26,7 @@ const Page = ({session}) => (
 
 Page.getInitialProps = async (context) => {
   return {
-    session: await session(context)
+    session: await getSession(context)
   }
 }
 

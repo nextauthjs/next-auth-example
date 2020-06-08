@@ -12,8 +12,7 @@ This is an example of how to use NextAuth.js library to add authentication to a 
 
 NextAuth.js is an easy to implement, full-stack (client/server) open source authentication library designed for [Next.js](https://nextjs.org) and [Serverless](https://now.sh).
 
-* Go to [next-auth.js.org](https://next-auth.js.org) for documentation
-* Go to [NextAuth.js v2 Announcement](https://github.com/iaincollins/next-auth/issues/99) for more information about the release of NextAuth.js v2
+See [next-auth.js.org](https://next-auth.js.org) for more information and documentation.
 
 *NextAuth.js is not associated with Vercel or Next.js.*
 
@@ -35,9 +34,11 @@ Add details for one or more providers (e.g. Google, Twitter, GitHub, Email, etc)
 cp example.env .env
 ```
 
-When configuring your database you should also install an appropriate node_module.
+#### How to configure a database
 
-e.g.
+Using a database is needed to persist user accounts, but you can still use NextAuth.js for authentication without one. You can skip configuring a database and come back to it later if you want.
+
+When configuring your database you should also install an appropriate node_module.
 
 * **SQLite**
 
@@ -80,13 +81,13 @@ Notes:
 
 ### 3. Configure authentication providers
 
-* Review and update options in `pages/api/auth/[...slug.js]` as needed.
+* Review and update options in `pages/api/auth/[...nextauth.js]` as needed.
 
 * When setting up OAUTH, in the developer admin page for each of your OAuth services, you should configure the callback URL to use a callback path of `{your server}/api/auth/callback/{provider}`.
 
   e.g. For Google: `http://localhost:3000/api/auth/callback/google`
 
-  A list of configured providers and their callback URLs is available from the endpoint `/api/auth/providers`. You can find more information at https://next-auth.js.org/providers
+  A list of configured providers and their callback URLs is available from the endpoint `/api/auth/providers`. You can find more information at https://next-auth.js.org/options/providers
 
 * You can also choose to specify an SMTP server for passwordless sign in via email.
 

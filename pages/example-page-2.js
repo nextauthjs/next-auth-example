@@ -1,4 +1,4 @@
-import { session } from 'next-auth/client'
+import { getSession } from 'next-auth/client'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
 
@@ -8,10 +8,10 @@ const Page = ({session}) => (
     <main>
       <h1>Example Page 2</h1>
       <p>
-        This page uses the universal <strong>session()</strong> method in <strong>getServerSideProps()</strong>.
+        This page uses the universal <strong>getSession()</strong> method in <strong>getServerSideProps()</strong>.
       </p>
       <p>
-        Using <strong>session()</strong> in <strong>getServerSideProps()</strong> is the recommended approach if you need to
+        Using <strong>getSession()</strong> in <strong>getServerSideProps()</strong> is the recommended approach if you need to
         support server side rendering with authentication.
       </p>
       <p>
@@ -28,7 +28,7 @@ const Page = ({session}) => (
 export async function getServerSideProps(context) {
   return {
     props: {
-      session: await session(context)
+      session: await getSession(context)
     }
   }
 }

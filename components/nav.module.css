@@ -16,10 +16,11 @@
   opacity: 0;
 }
 
-.text {
+.signedIn,
+.notSignedIn {
   position: absolute;
-  padding: .5rem 0 .4rem 0;
-  left: .6rem;
+  padding: .6rem 0 .4rem 0;
+  left: 1rem;
   right: 7rem;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -28,14 +29,28 @@
   z-index: 1;
 }
 
+.signedIn {
+  left: 3.8rem;
+}
+
+.avatar {
+  border-radius: 2rem;
+  float: left;
+  height: 2.2rem;
+  width: 2.2rem;
+  background-color: white;
+  background-size: cover;
+  border: 2px solid #ddd;
+}
+
 .signinButton,
 .signoutButton {
   float: right;
   margin-right: -.4rem;
-  font-weight: 600;
+  font-weight: 500;
   background-color: #1eb1fc;
   color: #fff;
-  border: 2px solid #1eb1fc;
+  border: 1px solid #1eb1fc;
   border-radius: 2rem;
   cursor: pointer;
   font-size: 1rem;
@@ -53,13 +68,13 @@
 
 .signoutButton {
   background-color: #fff;
-  border-color: #ddd;
-  color: #888;
+  border-color: #bbb;
+  color: #555;
 }
 
 .signoutButton:hover {
   background-color: #fff;
-  border-color: #bbb;
+  border-color: #aaa;
   color: #333;
 }
 

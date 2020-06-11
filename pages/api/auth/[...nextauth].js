@@ -37,11 +37,17 @@ const options = {
   // * The email sign in provider requires a database but OAuth providers do not
   database: process.env.DATABASE_URL,
 
+  // The secret should be set to a reasonably long random string.
+  // It is used to sign cookies and to sign and encrypt JWT, unless a seperate
+  // secret is defined explicitly for encrypting the JWT.
+  // It is auto-generated at startup if not specified.
+  secret: process.env.SECRET,
+
   session: {
     // Use JSON Web Tokens for session instead of database sessions.
     // This option can be used with or without a database for users/accounts.
     // Note: `jwt` is automatically set to `true` if no database is specified.
-    // jwt: false, 
+    jwt: true, 
     
     // Seconds - How long until an idle session expires and is no longer valid.
     // maxAge: 30 * 24 * 60 * 60, // 30 days
@@ -63,7 +69,9 @@ const options = {
 
   // JSON Web Token options
   jwt: {
-    // secret: 'my-secret-123', // Recommended (but auto-generated if not specified)
+    // The JWT secret is used to encrypt and sign the JWT.
+    // It is auto-generated at startup if not specified.
+    // secret: 'my-secret-123',
       
     // Custom encode/decode functions for signing + encryption can be specified.
     // if you want to override what is in the JWT or how it is signed.
@@ -100,9 +108,8 @@ const options = {
     // newUser: null // If set, new users will be directed here on first sign in
   },
 
-  // Additional options
-  // secret: 'abcdef123456789' // Recommended (but auto-generated if not specified)
-  // debug: true, // Use this option to enable debug messages in the console
+  // Use this option to enable debug messages in the console
+  // debug: true, 
 }
 
 export default (req, res) => NextAuth(req, res, options)

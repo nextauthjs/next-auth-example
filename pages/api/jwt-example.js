@@ -1,0 +1,13 @@
+// This is an example of how to read a JWT token. from an API route
+//
+// IMPORTANT! The JWT should never normally be exposed to the client in this
+// way, as it would be insecure. This intended as an example only.
+import jwt from 'next-auth/jwt'
+
+const secret = process.env.SECRET
+
+export default async (req, res) =>  {
+  // Automatically decrypts and verifies JWT
+  const token = await jwt.getJwt({ req, secret })
+  res.end(JSON.stringify(token, null, 2))
+}

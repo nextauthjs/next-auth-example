@@ -1,17 +1,17 @@
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 
+// For more information on options, go to 
+// https://next-auth.js.org/configuration/options
 const options = {
   site: process.env.SITE,
   providers: [
+    // https://next-auth.js.org/providers/email
     Providers.Email({
-      // SMTP connection string or nodemailer configuration object https://nodemailer.com/
       server: process.env.EMAIL_SERVER, 
-      // Email services often only allow sending email from a valid/verified address
       from: process.env.EMAIL_FROM,
     }),
-    // When configuring oAuth providers make sure you enabling requesting
-    // permission to get the users email address (required to sign in)
+    // https://next-auth.js.org/configuration/providers
     Providers.Google({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET
@@ -29,18 +29,17 @@ const options = {
       clientSecret: process.env.GITHUB_SECRET
     })
   ],
-  // The 'database' option should be a connection string or TypeORM
-  // configuration object https://typeorm.io/#/connection-options
+  // Database optional. MySQL, Maria DB, Postgres and MongoDB are supported.
+  // https://next-auth.js.org/configuration/database
   //
   // Notes:
-  // * You need to install an appropriate node_module for your database!
-  // * The email sign in provider requires a database but OAuth providers do not
+  // * You must to install an appropriate node_module for your database
+  // * The Email provider requires a database (OAuth providers do not)
   database: process.env.DATABASE_URL,
 
   // The secret should be set to a reasonably long random string.
-  // It is used to sign cookies and to sign and encrypt JWT, unless a seperate
-  // secret is defined explicitly for encrypting the JWT.
-  // It is auto-generated at startup if not specified.
+  // It is used to sign cookies and to sign and encrypt JSON Web Tokens, unless
+  // a seperate secret is defined explicitly for encrypting the JWT.
   secret: process.env.SECRET,
 
   session: {
@@ -56,18 +55,12 @@ const options = {
     // Use it to limit write operations. Set to 0 to always update the database.
     // Note: This option is ignored if using JSON Web Tokens 
     // updateAge: 24 * 60 * 60, // 24 hours
-    
-    // Easily add custom properties to response from `/api/auth/session`.
-    // Note: This should not return any sensitive information.
-    /*
-    get: async (session) => {
-      session.customSessionProperty = "ABC123"
-      return session
-    }
-    */
   },
 
   // JSON Web Token options
+  // JSON Web tokens are only used for sessions if the `jwt: true` option is set
+  // (or by default if no database is specified).
+  // https://next-auth.js.org/configuration/options#jwt
   jwt: {
     // The JWT secret is used to encrypt and sign the JWT.
     // It is auto-generated at startup if not specified.
@@ -77,29 +70,12 @@ const options = {
     // if you want to override what is in the JWT or how it is signed.
     // encode: async ({ secret, key, token, maxAge }) => {},
     // decode: async ({ secret, key, token, maxAge }) => {},
-  
-    // Easily add custom to the JWT. It is updated every time it is accessed.
-    // This encrypted and signed by default and may contain sensitive information
-    // as long as a reasonable secret is defined.
-    /*
-    set: async (token) => { 
-      token.customJwtProperty = "ABC123"
-      return token
-    }
-    */
   },
 
-  // Control which users / accounts can sign in
-  // You can use this option in conjuction with OAuth and JWT to control which
-  // accounts can sign in without having to use a database.
-  allowSignin: async (user, account) => {
-    // Return true if user / account is allowed to sign in.
-    // Return false to display an access denied message.
-    return true
-  },
-
-  // You can define custom pages to override the built-in pages
-  // The routes shown here are the default URLs that will be used.
+  // You can define custom pages to override the built-in pages.
+  // The routes shown here are the default URLs that will be used when a custom
+  // pages is not specified for that route.
+  // https://next-auth.js.org/configuration/pages
   pages: {
     // signin: '/api/auth/signin',  // Displays signin buttons
     // signout: '/api/auth/signout', // Displays form with sign out button
@@ -108,7 +84,16 @@ const options = {
     // newUser: null // If set, new users will be directed here on first sign in
   },
 
-  // Use this option to enable debug messages in the console
+  // Callbacks are asynchronous functions you can use to control what happens
+  // when an action is performed.
+  // https://next-auth.js.org/configuration/callbacks 
+  callbacks: { },
+
+  // Events are useful for logging
+  // https://next-auth.js.org/configuration/options#events
+  events: { },
+
+  // Eenable debug messages in the console if you are having problems
   // debug: true, 
 }
 

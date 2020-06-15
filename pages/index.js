@@ -5,15 +5,15 @@ export default () => (
   <>
     <Nav/>
     <main>
-      <h1>NextAuth.js Demo</h1>
+      <h1>NextAuth.js Example</h1>
       <p>
-        This is an example project that uses <a href={`https://www.npmjs.com/package/next-auth/v/beta`}>next-auth@beta</a>.
+        This is an example project to demonstrate <a href={`https://www.npmjs.com/package/next-auth/v/beta`}>NextAuth.js</a>.
       </p>
       <p>
-        See <a href="https://next-auth.js.org">next-auth.js.org</a> for more information and documentation.
+        Go to <a href="https://next-auth.js.org">next-auth.js.org</a> for more information and documentation.
       </p>
       <p>
-        This live demo uses an in-memory database which is automatically erased after ~2 hours.
+        This site uses JSON Web Tokens and an in-memory database which resets every ~2 hours.
       </p>
     </main>
     <Footer/>

@@ -2,21 +2,19 @@
 
 [next-auth-example.now.sh](https://next-auth-example.now.sh)
 
-## About This Project
+## About this project
 
-This is an example of how to use NextAuth.js library to add authentication to a [Next.js](https://nextjs.org) application.
+This is an example of how to use [NextAuth.js](https://next-auth.js.org) library to add authentication to a [Next.js](https://nextjs.org) application.
 
 ## About NextAuth.js
 
-**NextAuth.js v2 is beta software and is not ready for production use yet.**
-
 NextAuth.js is an easy to implement, full-stack (client/server) open source authentication library designed for [Next.js](https://nextjs.org) and [Serverless](https://now.sh).
 
-See [next-auth.js.org](https://next-auth.js.org) for more information and documentation.
+Go to [next-auth.js.org](https://next-auth.js.org) for more information and documentation.
 
 *NextAuth.js is not associated with Vercel or Next.js.*
 
-## Getting Started
+## Getting started
 
 ### 1. Clone the repository and install dependancies
 
@@ -34,9 +32,11 @@ Add details for one or more providers (e.g. Google, Twitter, GitHub, Email, etc)
 cp example.env .env
 ```
 
-#### How to configure a database
+#### Database configuration
 
-Using a database is needed to persist user accounts, but you can still use NextAuth.js for authentication without one. You can skip configuring a database and come back to it later if you want.
+A database is needed to persist user accounts and to support email sign in, but you can still use NextAuth.js for authentication without one by using OAuth for authenticaiton. If you do not specify a database, JSON Web Tokens will be enabled by default.
+
+You can skip configuring a database and come back to it later if you want.
 
 When configuring your database you should also install an appropriate node_module.
 
@@ -77,15 +77,15 @@ Notes:
 * The example .env specifies an in-memory SQLite database that does not persist data.
 * SQLite is suitable for development / testing but not for production.
 * The option `?synchronize=true` automatically syncs schema changes to the database. It should not be used in production as may result in data loss if there are changes to the schema or to NextAuth.js
-* You can also specify a [TypeORM connection object](https://typeorm.io/#/connection-options) in `pages/api/auth/[...slug.js]` instead of a database URL / connection string.
+* You can also specify a [TypeORM connection object](https://typeorm.io/#/connection-options) in `pages/api/auth/[...nextauth.js]` instead of a database URL / connection string.
 
-### 3. Configure authentication providers
+### 3. Authentication configuration
 
 * Review and update options in `pages/api/auth/[...nextauth.js]` as needed.
 
-* When setting up OAUTH, in the developer admin page for each of your OAuth services, you should configure the callback URL to use a callback path of `{your server}/api/auth/callback/{provider}`.
+* When setting up OAUTH, in the developer admin page for each of your OAuth services, you should configure the callback URL to use a callback path of `{server}/api/auth/callback/{provider}`.
 
-  e.g. For Google: `http://localhost:3000/api/auth/callback/google`
+  e.g. For Google OAuth you would use: `http://localhost:3000/api/auth/callback/google`
 
   A list of configured providers and their callback URLs is available from the endpoint `/api/auth/providers`. You can find more information at https://next-auth.js.org/options/providers
 

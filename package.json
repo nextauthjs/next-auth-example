@@ -18,5 +18,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "sqlite3": "^4.2.0"
+  },
+  "devDependencies": {
+    "cypress": "^4.8.0"
   }
 }

@@ -24,6 +24,7 @@
     "sqlite3": "^4.2.0"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^6.0.0",
     "cypress": "^4.8.0",
     "start-server-and-test": "^1.11.0"
   }

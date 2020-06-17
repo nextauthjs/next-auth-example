@@ -8,7 +8,10 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "npm run build && start-server-and-test start http://localhost:3000 cy:run",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open"
   },
   "author": "Iain Collins <me@iaincollins.com>",
   "license": "ISC",
@@ -20,6 +23,7 @@
     "sqlite3": "^4.2.0"
   },
   "devDependencies": {
-    "cypress": "^4.8.0"
+    "cypress": "^4.8.0",
+    "start-server-and-test": "^1.11.0"
   }
 }

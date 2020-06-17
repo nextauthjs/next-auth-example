@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "next start",
     "test": "npm run build && start-server-and-test start http://localhost:3000 cy:run",
+    "test:dev": "start-server-and-test dev http://localhost:3000 cy:open",
     "cy:run": "cypress run",
     "cy:open": "cypress open"
   },

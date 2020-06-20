@@ -11,28 +11,30 @@ export default () => {
   const [ session, loading ] = useSession()
   
   return (
-    <nav className={styles.nav}>
+    <nav>
       <noscript>
         <style>{`.nojs-show { opacity: 1; top: 0; }`}</style>
       </noscript>
-      <p className={`nojs-show ${(!session && loading) ? styles.loading : styles.loaded}`}>
-        {!session && <>
-          <span className={styles.notSignedInText}>You are not signed in</span>
-          <a href={`/api/auth/signin`} onClick={(e) => { e.preventDefault(); signin() }}>
-            <button className={styles.buttonPrimary}>Sign in</button>
-          </a>
-        </>}
-        {session && <>
-          <span style={{backgroundImage: `url(${session.user.image})` }} className={styles.avatar}/>
-          <span className={styles.signedInText}>
-            <small>Signed in as</small><br/>
-            <strong>{session.user.email || session.user.name}</strong>
-            </span>
-          <a href={`/api/auth/signout`} onClick={(e) => { e.preventDefault(); signout() }}>
-            <button className={styles.button}>Sign out</button>
-          </a>
-        </>}
-      </p>
+      <div className={styles.signedInStatus}>
+        <p className={`nojs-show ${(!session && loading) ? styles.loading : styles.loaded}`}>
+          {!session && <>
+            <span className={styles.notSignedInText}>You are not signed in</span>
+            <a href={`/api/auth/signin`} onClick={(e) => { e.preventDefault(); signin() }}>
+              <button className={styles.buttonPrimary}>Sign in</button>
+            </a>
+          </>}
+          {session && <>
+            <span style={{backgroundImage: `url(${session.user.image})` }} className={styles.avatar}/>
+            <span className={styles.signedInText}>
+              <small>Signed in as</small><br/>
+              <strong>{session.user.email || session.user.name}</strong>
+              </span>
+            <a href={`/api/auth/signout`} onClick={(e) => { e.preventDefault(); signout() }}>
+              <button className={styles.button}>Sign out</button>
+            </a>
+          </>}
+        </p>
+      </div>
       <ul className={styles.navItems}>
         <li className={styles.navItem}><Link href="/"><a>Home</a></Link></li>
         <li className={styles.navItem}><Link href="/example-page-1"><a>Page 1</a></Link></li>

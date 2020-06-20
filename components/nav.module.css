@@ -1,7 +1,7 @@
 /* Set min-height to avoid page reflow while session loading */
-.nav {
+.signedInStatus {
   display: block;
-  min-height: 8rem;
+  min-height: 4rem;
   width: 100%;
 }
 

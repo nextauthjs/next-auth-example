@@ -11,15 +11,15 @@ export default () => {
   const [ session, loading ] = useSession()
   
   return (
-    <nav>
+    <nav className={styles.nav}>
       <noscript>
         <style>{`.nojs-show { opacity: 1; top: 0; }`}</style>
       </noscript>
       <p className={`nojs-show ${(!session && loading) ? styles.loading : styles.loaded}`}>
-      {!session && <>
+        {!session && <>
           <span className={styles.notSignedInText}>You are not signed in</span>
           <a href={`/api/auth/signin`} onClick={(e) => { e.preventDefault(); signin() }}>
-            <button className={styles.signinButton}>Sign in</button>
+            <button className={styles.buttonPrimary}>Sign in</button>
           </a>
         </>}
         {session && <>
@@ -29,15 +29,15 @@ export default () => {
             <strong>{session.user.email || session.user.name}</strong>
             </span>
           <a href={`/api/auth/signout`} onClick={(e) => { e.preventDefault(); signout() }}>
-            <button className={styles.signoutButton}>Sign out</button>
+            <button className={styles.button}>Sign out</button>
           </a>
         </>}
       </p>
-      <ul className={styles.navigation}>
-        <li className={styles.navigationItem}><Link href="/"><a>Home</a></Link></li>
-        <li className={styles.navigationItem}><Link href="/example-page-1"><a>Page 1</a></Link></li>
-        <li className={styles.navigationItem}><Link href="/example-page-2"><a>Page 2</a></Link></li>
-        <li className={styles.navigationItem}><Link href="/example-page-3"><a>Page 3</a></Link></li>
+      <ul className={styles.navItems}>
+        <li className={styles.navItem}><Link href="/"><a>Home</a></Link></li>
+        <li className={styles.navItem}><Link href="/example-page-1"><a>Page 1</a></Link></li>
+        <li className={styles.navItem}><Link href="/example-page-2"><a>Page 2</a></Link></li>
+        <li className={styles.navItem}><Link href="/example-page-3"><a>Page 3</a></Link></li>
       </ul>
     </nav>
   )

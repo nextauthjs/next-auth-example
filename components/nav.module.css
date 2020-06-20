@@ -1,3 +1,10 @@
+/* Set min-height to avoid page reflow while session loading */
+.nav {
+  display: block;
+  min-height: 8rem;
+  width: 100%;
+}
+
 .loading,
 .loaded {
   position: relative;
@@ -5,7 +12,6 @@
   opacity: 1;
   overflow: hidden;
   border-radius: 0 0 .6rem .6rem;
-  border-bottom: .1rem solid #e6e6e6;
   padding: .6rem 1rem;
   margin: 0;
   background-color: #f6f6f6;
@@ -46,8 +52,8 @@
   background-repeat: no-repeat;
 }
 
-.signinButton,
-.signoutButton {
+.button,
+.buttonPrimary {
   float: right;
   margin-right: -.4rem;
   font-weight: 500;
@@ -58,37 +64,36 @@
   padding: .7rem 1.4rem;
   position: relative;
   z-index: 10;
-  box-shadow: 0 0.15rem 0.3rem rgba(0,0,0,.15), inset 0 .1rem .2rem rgba(255,255,255,.25), inset 0 -.1rem .1rem rgba(0,0,0,0.05);
+  box-shadow: 0 0.15rem 0.3rem rgba(0,0,0,.05), inset 0 .1rem .2rem rgba(255,255,255,.25), inset 0 -.1rem .1rem rgba(0,0,0,0.05);
   background-color: #fff;
   border: 1px solid #ccc;
   color: #555;
 }
 
-.signoutButton:hover {
+.button:hover {
   background-color: #fff;
   border-color: #aaa;
   color: #555;
 }
 
-.signinButton {
+.buttonPrimary {
   background-color: #555;
   border-color: #555;
   color: #eee;
   box-shadow: 0 0.15rem 0.3rem rgba(0,0,0,.15);
 }
 
-.signinButton:hover {
+.buttonPrimary:hover {
   background-color: #444;
   border-color: #444;
 }
 
-.navigation {
-  margin-bottom: 2rem;
+.navItems {
   padding: 0 .5rem;
   list-style: none;
 }
 
-.navigationItem {
+.navItem {
   display: inline-block;
   margin-right: 1rem;
 }

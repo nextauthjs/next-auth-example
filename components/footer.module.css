@@ -2,13 +2,13 @@
   margin-top: 2.5rem;
 }
 
-.navigation {
+.navItems {
   margin-bottom: 2rem;
   padding: 0;
   list-style: none;
 }
 
-.navigationItem {
+.navItem {
   display: inline-block;
   margin-right: 1rem;
 }

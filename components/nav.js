@@ -19,9 +19,16 @@ export default () => {
         <p className={`nojs-show ${(!session && loading) ? styles.loading : styles.loaded}`}>
           {!session && <>
             <span className={styles.notSignedInText}>You are not signed in</span>
-            <a href={`/api/auth/signin`} onClick={(e) => { e.preventDefault(); signin() }}>
-              <button className={styles.buttonPrimary}>Sign in</button>
-            </a>
+            <a
+                href={`/api/auth/signin`}
+                className={styles.buttonPrimary}
+                onClick={(e) => {
+                  e.preventDefault();
+                  signin();
+                }}
+              >
+                Sign in
+              </a>
           </>}
           {session && <>
             <span style={{backgroundImage: `url(${session.user.image})` }} className={styles.avatar}/>
@@ -29,9 +36,16 @@ export default () => {
               <small>Signed in as</small><br/>
               <strong>{session.user.email || session.user.name}</strong>
               </span>
-            <a href={`/api/auth/signout`} onClick={(e) => { e.preventDefault(); signout() }}>
-              <button className={styles.button}>Sign out</button>
-            </a>
+            <a
+                href={`/api/auth/signout`}
+                className={styles.button}
+                onClick={(e) => {
+                  e.preventDefault();
+                  signout();
+                }}
+              >
+                Sign out
+              </a>
           </>}
         </p>
       </div>

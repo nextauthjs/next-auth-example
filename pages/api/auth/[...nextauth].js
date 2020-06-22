@@ -27,6 +27,11 @@ const options = {
     Providers.GitHub({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET
+    }),
+    Providers.Auth0({
+      clientId: process.env.AUTH0_ID,
+      clientSecret: process.env.AUTH0_SECRET,
+      domain: process.env.AUTH0_DOMAIN
     })
   ],
   // Database optional. MySQL, Maria DB, Postgres and MongoDB are supported.
@@ -94,7 +99,7 @@ const options = {
   events: { },
 
   // Eenable debug messages in the console if you are having problems
-  // debug: true, 
+  debug: false,
 }
 
 export default (req, res) => NextAuth(req, res, options)

@@ -78,15 +78,14 @@
 }
 
 .buttonPrimary {
-  background-color: #555;
-  border-color: #555;
-  color: #eee;
+  background-color: #346df1;
+  border-color: #346df1;
+  color: #fff;
   box-shadow: 0 0.15rem 0.3rem rgba(0,0,0,.15);
 }
 
 .buttonPrimary:hover {
-  background-color: #444;
-  border-color: #444;
+  box-shadow: 0 0.15rem 0.3rem rgba(0,0,0,.15), inset 0 0 5rem rgba(0,0,0,0.2)
 }
 
 .navItems {

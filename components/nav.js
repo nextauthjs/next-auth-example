@@ -51,9 +51,8 @@ export default () => {
       </div>
       <ul className={styles.navItems}>
         <li className={styles.navItem}><Link href="/"><a>Home</a></Link></li>
-        <li className={styles.navItem}><Link href="/example-page-1"><a>Page 1</a></Link></li>
-        <li className={styles.navItem}><Link href="/example-page-2"><a>Page 2</a></Link></li>
-        <li className={styles.navItem}><Link href="/example-page-3"><a>Page 3</a></Link></li>
+        <li className={styles.navItem}><Link href="/react-hook"><a>React Hook</a></Link></li>
+        <li className={styles.navItem}><Link href="/ssr"><a>Server Side Rendering</a></Link></li>
       </ul>
     </nav>
   )

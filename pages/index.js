@@ -7,7 +7,7 @@ export default () => (
     <main>
       <h1>NextAuth.js Example</h1>
       <p>
-        This is an example project to demonstrate <a href={`https://www.npmjs.com/package/next-auth/v/beta`}>NextAuth.js</a>.
+        This is an example project to demonstrate <a href={`https://www.npmjs.com/package/next-auth/v/beta`}>NextAuth.js </a>.
       </p>
       <p>
         Go to <a href="https://next-auth.js.org">next-auth.js.org</a> for more information and documentation.

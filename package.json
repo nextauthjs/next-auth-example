@@ -1,6 +1,6 @@
 {
   "name": "next-auth-example",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "An example website that uses next-auth@beta",
   "repository": "https://github.com/iaincollins/next-auth-example.git",
   "homepage": "http://next-auth-example.now.sh",

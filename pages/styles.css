@@ -1,22 +1,15 @@
 body {
   font-family: -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  line-height: 1.4rem;
   padding: 0 1rem 1rem 1rem;
   max-width: 680px;
   margin: 0 auto;
   color: #333;
+  
 }
 
-h1 {
-  margin: 2rem 0;
-  font-size: 2rem;
-  line-height: 2rem;
-  font-weight: 300;
-}
-
-h4 {
-  margin-bottom: .5rem;
-  text-transform: uppercase;
+li,
+p {
+  line-height: 1.5rem;
 }
 
 a {
@@ -25,8 +18,4 @@ a {
 
 hr {
   border: 1px solid #ddd;
-}
-
-main {
-  padding: 0 .5rem;
 }

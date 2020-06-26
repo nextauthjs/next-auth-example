@@ -89,7 +89,8 @@
 }
 
 .navItems {
-  padding: 0 .5rem;
+  margin-bottom: 2rem;
+  padding: 0;
   list-style: none;
 }
 

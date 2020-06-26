@@ -1,17 +1,15 @@
 import Link from 'next/link'
 import { signin, signout, useSession } from 'next-auth/client'
-import styles from './nav.module.css'
+import styles from './header.module.css'
 
-/**
- * The approach used in this component shows how to built a sign in and sign out
- * component that works on pages which support both client and server side
- * rendering, and avoids any flash incorrect content on initial page load.
- **/
+// The approach used in this component shows how to built a sign in and sign out
+// component that works on pages which support both client and server side
+// rendering, and avoids any flash incorrect content on initial page load.
 export default () => {
   const [ session, loading ] = useSession()
   
   return (
-    <nav>
+    <header>
       <noscript>
         <style>{`.nojs-show { opacity: 1; top: 0; }`}</style>
       </noscript>
@@ -49,11 +47,13 @@ export default () => {
           </>}
         </p>
       </div>
-      <ul className={styles.navItems}>
-        <li className={styles.navItem}><Link href="/"><a>Home</a></Link></li>
-        <li className={styles.navItem}><Link href="/react-hook"><a>React Hook</a></Link></li>
-        <li className={styles.navItem}><Link href="/ssr"><a>Server Side Rendering</a></Link></li>
-      </ul>
-    </nav>
+      <nav>
+        <ul className={styles.navItems}>
+          <li className={styles.navItem}><Link href="/"><a>Home</a></Link></li>
+          <li className={styles.navItem}><Link href="/hook"><a>React Hook</a></Link></li>
+          <li className={styles.navItem}><Link href="/ssr"><a>Server Side Rendering</a></Link></li>
+        </ul>
+      </nav>
+    </header>
   )
 }

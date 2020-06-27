@@ -32,6 +32,15 @@ const options = {
       clientId: process.env.AUTH0_ID,
       clientSecret: process.env.AUTH0_SECRET,
       domain: process.env.AUTH0_DOMAIN
+    }),
+    Providers.Apple({
+      clientId: process.env.APPLE_ID,
+      clientSecret: {
+        appleId: process.env.APPLE_ID,
+        teamId: process.env.APPLE_TEAM_ID,
+        privateKey: process.env.APPLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+        keyId: process.env.APPLE_KEY_ID,
+      }
     })
   ],
   // Database optional. MySQL, Maria DB, Postgres and MongoDB are supported.

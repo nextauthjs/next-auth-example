@@ -105,3 +105,8 @@ dist
 
 .vercel
 .now
+certificates/localhost.crt
+certificates/localhost.key
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+.vs/next-auth-example/v16/.suo

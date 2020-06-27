@@ -7,7 +7,7 @@
   "main": "",
   "scripts": {
     "dev": "next",
-    "secure": "node server.js",
+    "dev:secure": "node server.js",
     "build": "next build",
     "start": "next start"
   },

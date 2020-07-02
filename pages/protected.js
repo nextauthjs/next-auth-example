@@ -1,30 +1,26 @@
 import { getSession } from 'next-auth/client'
 import Layout from '../components/layout'
+import AccessDenied from '../components/access-denied'
 
-const AccessDenied = () =>
-  <Layout>
-    <h1>Access Denied</h1>
-    <p>
-      <a href="/api/auth/signin">You must be signed in to view this page</a>
-    </p>
-  </Layout>
-
-const Page = ({session}) => {
+export default ({session}) => {
   if (!session) { return <AccessDenied/> }
 
   return (
     <Layout>
       <h1>Protected Page</h1>
-      <p>You are signed in and can view this page.</p>
+      <p>This page is protected using server side protection, you must be signed in to access it.</p>
+      <p>You can view this page because you are signed in.</p>
     </Layout>
   )
 }
 
-Page.getInitialProps = async (context) => {
+export async function getServerSideProps(context) {
+  // If session exists, you can safely return other data here
+  const session = await getSession(context)
   return {
-    session: await getSession(context)
+    props: {
+      session
+    }
   }
 }
-
-export default Page
 

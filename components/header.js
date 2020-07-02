@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { signin, signout, useSession } from 'next-auth/client'
+import { signIn, signOut, useSession } from 'next-auth/client'
 import styles from './header.module.css'
 
 // The approach used in this component shows how to built a sign in and sign out
@@ -22,7 +22,7 @@ export default () => {
                 className={styles.buttonPrimary}
                 onClick={(e) => {
                   e.preventDefault();
-                  signin();
+                  signIn();
                 }}
               >
                 Sign in
@@ -39,7 +39,7 @@ export default () => {
                 className={styles.button}
                 onClick={(e) => {
                   e.preventDefault();
-                  signout();
+                  signOut();
                 }}
               >
                 Sign out
@@ -50,9 +50,9 @@ export default () => {
       <nav>
         <ul className={styles.navItems}>
           <li className={styles.navItem}><Link href="/"><a>Home</a></Link></li>
-          <li className={styles.navItem}><Link href="/hook"><a>React Hook</a></Link></li>
-          <li className={styles.navItem}><Link href="/ssr"><a>Server Side Rendering</a></Link></li>
-          <li className={styles.navItem}><Link href="/protected"><a>Protected Page</a></Link></li>
+          <li className={styles.navItem}><Link href="/client"><a>Client Side</a></Link></li>
+          <li className={styles.navItem}><Link href="/server"><a>Server Side</a></Link></li>
+          <li className={styles.navItem}><Link href="/protected"><a>Protected</a></Link></li>
         </ul>
       </nav>
     </header>

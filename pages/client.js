@@ -2,7 +2,7 @@ import Layout from '../components/layout'
 
 export default () => (
   <Layout>
-    <h1>React Hook</h1>
+    <h1>Client Side Rendering</h1>
     <p>
       This page uses the <strong>useSession()</strong> React Hook in the <strong>&lt;/Header&gt;</strong> component.
     </p>

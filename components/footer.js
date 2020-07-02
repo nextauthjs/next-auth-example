@@ -8,5 +8,8 @@ export default () => (
       <li className={styles.navItem}><a href="https://www.npmjs.com/package/next-auth">NPM</a></li>
       <li className={styles.navItem}><a href="https://github.com/iaincollins/next-auth-example">GitHub</a></li>
     </ul>
+    <p>
+      <em>This example project is using next-auth@3.0.0-beta.3</em>
+    </p>
   </footer>
 )

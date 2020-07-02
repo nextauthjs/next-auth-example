@@ -105,3 +105,4 @@ dist
 
 .vercel
 .now
+.env.local

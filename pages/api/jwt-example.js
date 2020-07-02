@@ -7,7 +7,7 @@ import jwt from 'next-auth/jwt'
 const secret = process.env.SECRET
 
 export default async (req, res) =>  {
-  // Automatically decrypts and verifies JWT
   const token = await jwt.getJwt({ req, secret })
-  res.end(JSON.stringify(token, null, 2))
+  console.log( JSON.stringify(token, null, 2) )
+  res.end()
 }

@@ -52,6 +52,7 @@ export default () => {
           <li className={styles.navItem}><Link href="/"><a>Home</a></Link></li>
           <li className={styles.navItem}><Link href="/hook"><a>React Hook</a></Link></li>
           <li className={styles.navItem}><Link href="/ssr"><a>Server Side Rendering</a></Link></li>
+          <li className={styles.navItem}><Link href="/protected"><a>Protected Page</a></Link></li>
         </ul>
       </nav>
     </header>

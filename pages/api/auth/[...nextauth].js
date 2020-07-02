@@ -4,14 +4,12 @@ import Providers from 'next-auth/providers'
 // For more information on options, go to 
 // https://next-auth.js.org/configuration/options
 const options = {
-  site: process.env.SITE,
+  // https://next-auth.js.org/configuration/providers
   providers: [
-    // https://next-auth.js.org/providers/email
     Providers.Email({
       server: process.env.EMAIL_SERVER, 
       from: process.env.EMAIL_FROM,
     }),
-    // https://next-auth.js.org/configuration/providers
     Providers.Google({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET

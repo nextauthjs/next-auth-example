@@ -24,13 +24,15 @@ cd next-auth-example
 npm i
 ```
 
-### 2. Copy `example.env` to `.env`
+### 2. Configure your local environment
+
+Copy the .env.local.example file in this directory to .env.local (which will be ignored by Git):
+
+```
+cp .env.local.example .env.local
+```
 
 Add details for one or more providers (e.g. Google, Twitter, GitHub, Email, etc).
-
-```
-cp example.env .env
-```
 
 #### Database configuration
 
@@ -110,6 +112,10 @@ Note: You will also need environment variables set up in your production environ
 
 To do this in `now.sh` you can use the `now env` command:
 
-    now env add DATABASE_URL production
+    now env add NEXTAUTH_URL production
 
 Before deploying to production, be sure to set environment variables for the ID and Secrets for all your authentication providers.
+
+You MUST set the NEXTAUTH_URL environment variable with the URL of your site, before deploying to production.
+
+e.g. `NEXTAUTH_URL=https://example.com`

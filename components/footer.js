@@ -9,7 +9,7 @@ export default () => (
       <li className={styles.navItem}><a href="https://github.com/iaincollins/next-auth-example">GitHub</a></li>
     </ul>
     <p>
-      <em>This example project is using next-auth@3.0.0-beta.3</em>
+      <em>This example project is using next-auth@3.0.0-beta.5</em>
     </p>
   </footer>
 )

@@ -2,8 +2,8 @@ import { useSession, getSession } from 'next-auth/client'
 import Layout from '../components/layout'
 import AccessDenied from '../components/access-denied'
 
-export default () => {
-  const [ session, loading ] = useSession()
+export default (props) => {
+  const [ session, loading ] = useSession(props.session)
 
   if (!session) { return <AccessDenied/> }
 
@@ -14,4 +14,11 @@ export default () => {
       <p>You can view this page because you are signed in.</p>
     </Layout>
   )
+}
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context)
+  return {
+    props: { session }
+  }
 }

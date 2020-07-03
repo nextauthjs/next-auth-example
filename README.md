@@ -81,7 +81,7 @@ Notes:
 * The option `?synchronize=true` automatically syncs schema changes to the database. It should not be used in production as may result in data loss if there are changes to the schema or to NextAuth.js
 * You can also specify a [TypeORM connection object](https://typeorm.io/#/connection-options) in `pages/api/auth/[...nextauth.js]` instead of a database URL / connection string.
 
-### 3. Authentication configuration
+### 3. Configure authentication providers
 
 * Review and update options in `pages/api/auth/[...nextauth.js]` as needed.
 
@@ -108,14 +108,15 @@ npm build
 npm start
 ```
 
-Note: You will also need environment variables set up in your production environment.
-
-To do this in `now.sh` you can use the `now env` command:
-
-    now env add NEXTAUTH_URL production
-
-Before deploying to production, be sure to set environment variables for the ID and Secrets for all your authentication providers.
+### 5. Configuring for production
 
 You MUST set the NEXTAUTH_URL environment variable with the URL of your site, before deploying to production.
 
 e.g. `NEXTAUTH_URL=https://example.com`
+
+To do this in on Vercel, you can use the [Vercel project dashboard](https://vercel.com/dashboard) or the `now env` command:
+
+    now env add NEXTAUTH_URL production
+
+Be sure to also set environment variables for the ID and Secrets for all your authentication providers.
+

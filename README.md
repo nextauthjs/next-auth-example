@@ -36,7 +36,7 @@ Add details for one or more providers (e.g. Google, Twitter, GitHub, Email, etc)
 
 #### Database configuration
 
-A database is needed to persist user accounts and to support email sign in, but you can still use NextAuth.js for authentication without one by using OAuth for authenticaiton. If you do not specify a database, JSON Web Tokens will be enabled by default.
+A database is needed to persist user accounts and to support email sign in, but you can still use NextAuth.js for authentication without one by using OAuth for authentication. If you do not specify a database, JSON Web Tokens will be enabled by default.
 
 You can skip configuring a database and come back to it later if you want.
 
@@ -81,7 +81,7 @@ Notes:
 * The option `?synchronize=true` automatically syncs schema changes to the database. It should not be used in production as may result in data loss if there are changes to the schema or to NextAuth.js
 * You can also specify a [TypeORM connection object](https://typeorm.io/#/connection-options) in `pages/api/auth/[...nextauth.js]` instead of a database URL / connection string.
 
-### 3. Authentication configuration
+### 3. Configure authentication providers
 
 * Review and update options in `pages/api/auth/[...nextauth.js]` as needed.
 
@@ -89,7 +89,7 @@ Notes:
 
   e.g. For Google OAuth you would use: `http://localhost:3000/api/auth/callback/google`
 
-  A list of configured providers and their callback URLs is available from the endpoint `/api/auth/providers`. You can find more information at https://next-auth.js.org/options/providers
+  A list of configured providers and their callback URLs is available from the endpoint `/api/auth/providers`. You can find more information at https://next-auth.js.org/configuration/providers
 
 * You can also choose to specify an SMTP server for passwordless sign in via email.
 
@@ -108,14 +108,15 @@ npm build
 npm start
 ```
 
-Note: You will also need environment variables set up in your production environment.
+### 5. Configuring for production
 
-To do this in `now.sh` you can use the `now env` command:
+You must set the NEXTAUTH_URL environment variable with the URL of your site, before deploying to production.
+
+e.g. `NEXTAUTH_URL=https://example.com`
+
+To do this in on Vercel, you can use the [Vercel project dashboard](https://vercel.com/dashboard) or the `now env` command:
 
     now env add NEXTAUTH_URL production
 
-Before deploying to production, be sure to set environment variables for the ID and Secrets for all your authentication providers.
+Be sure to also set environment variables for the Client ID and Client Secret values for all your authentication providers.
 
-You MUST set the NEXTAUTH_URL environment variable with the URL of your site, before deploying to production.
-
-e.g. `NEXTAUTH_URL=https://example.com`

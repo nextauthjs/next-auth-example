@@ -12,10 +12,10 @@ export default ({session}) => (
       support server side rendering with authentication.
     </p>
     <p>
-      <strong>Server side page rendering is not as fast as client side rendering</strong>, so any page that uses this approach will be slower than a page that only uses the React Hook.
+      The advantage of server side rendering is this page does not require client side JavaScript.
     </p>
     <p>
-      This page does not require client side JavaScript.
+      The disadvantage of server side rendering is that this page is slower to render.
     </p>
   </Layout>
 )

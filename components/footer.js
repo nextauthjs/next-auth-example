@@ -7,9 +7,7 @@ export default () => (
       <li className={styles.navItem}><a href="https://next-auth.js.org">Documentation</a></li>
       <li className={styles.navItem}><a href="https://www.npmjs.com/package/next-auth">NPM</a></li>
       <li className={styles.navItem}><a href="https://github.com/iaincollins/next-auth-example">GitHub</a></li>
+      <li className={styles.navItem}><em>next-auth@3.0.0-beta.9</em></li>
     </ul>
-    <p>
-      <em>This example project is using next-auth@3.0.0-beta.6</em>
-    </p>
   </footer>
 )

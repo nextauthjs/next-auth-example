@@ -10,6 +10,15 @@ const options = {
       server: process.env.EMAIL_SERVER, 
       from: process.env.EMAIL_FROM,
     }),
+    Providers.Apple({
+      clientId: process.env.APPLE_ID,
+      clientSecret: { 
+        appleId: process.env.APPLE_ID,
+        teamId: process.env.APPLE_TEAM_ID,
+        privateKey: process.env.APPLE_PRIVATE_KEY,
+        keyId: process.env.APPLE_KEY_ID,
+      }
+    }),
     Providers.Auth0({
       clientId: process.env.AUTH0_ID,
       clientSecret: process.env.AUTH0_SECRET,

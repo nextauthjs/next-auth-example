@@ -1,7 +1,4 @@
-// This is an example of how to read a JWT token. from an API route
-//
-// IMPORTANT! The JWT should never normally be exposed to the client in this
-// way, as it would be insecure. This intended as an example only.
+// This is an example of how to read a JSON Web Token from an API route
 import jwt from 'next-auth/jwt'
 
 const secret = process.env.SECRET

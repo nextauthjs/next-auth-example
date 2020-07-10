@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 
-// For more information on options, go to 
+// For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
 const options = {
   // https://next-auth.js.org/configuration/providers
@@ -69,19 +69,13 @@ const options = {
     // updateAge: 24 * 60 * 60, // 24 hours
   },
 
-  // JSON Web Token options
   // JSON Web tokens are only used for sessions if the `jwt: true` option is set
   // (or by default if no database is specified).
   // https://next-auth.js.org/configuration/options#jwt
   jwt: {
-    // The JWT secret is used to encrypt and sign the JWT.
-    // It is auto-generated at startup if not specified.
-    // secret: 'my-secret-123',
-      
-    // Custom encode/decode functions for signing + encryption can be specified.
-    // if you want to override what is in the JWT or how it is signed.
-    // encode: async ({ secret, key, token, maxAge }) => {},
-    // decode: async ({ secret, key, token, maxAge }) => {},
+    // JWT secret and keys use the NextAuth.js secret if not specified
+    // secret: 'my-secret-123', // Secret used for signing tokens
+    // key: 'my-key-abc', // Key used for encrypting tokens (defaults to secret)
   },
 
   // You can define custom pages to override the built-in pages.

@@ -14,7 +14,7 @@
   border-radius: 0 0 .6rem .6rem;
   padding: .6rem 1rem;
   margin: 0;
-  background-color: #f5f5f5;
+  background-color: rgba(0,0,0,.05);
   transition: all 0.2s ease-in;
 }
 

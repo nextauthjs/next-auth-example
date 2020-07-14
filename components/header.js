@@ -21,8 +21,8 @@ export default () => {
                 href={`/api/auth/signin`}
                 className={styles.buttonPrimary}
                 onClick={(e) => {
-                  e.preventDefault();
-                  signIn();
+                  e.preventDefault()
+                  signIn()
                 }}
               >
                 Sign in
@@ -38,8 +38,8 @@ export default () => {
                 href={`/api/auth/signout`}
                 className={styles.button}
                 onClick={(e) => {
-                  e.preventDefault();
-                  signOut();
+                  e.preventDefault()
+                  signOut()
                 }}
               >
                 Sign out

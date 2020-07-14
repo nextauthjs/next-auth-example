@@ -69,13 +69,20 @@ const options = {
     // updateAge: 24 * 60 * 60, // 24 hours
   },
 
-  // JSON Web tokens are only used for sessions if the `jwt: true` option is set
-  // (or by default if no database is specified).
+  // JSON Web tokens are only used for sessions if the `jwt: true` session
+  // option is set - or by default if no database is specified.
   // https://next-auth.js.org/configuration/options#jwt
   jwt: {
-    // JWT secret and keys use the NextAuth.js secret if not specified
-    // secret: 'my-secret-123', // Secret used for signing tokens
-    // key: 'my-key-abc', // Key used for encrypting tokens (defaults to secret)
+    // A secret to use for key generation (you should set this explicitly)
+    // secret: 'INp8IvdIyeMcoGAgFGoA61DdBglwwSqnXJZkgz8PSnw', 
+    
+    // Set to true to use encryption (default: false)
+    // encryption: true,
+
+    // You can define your own encode/decode functions for signing and encryption
+    // if you want to override the default behaviour.
+    // encode: async ({ secret, token, maxAge }) => {},
+    // decode: async ({ secret, token, maxAge }) => {},
   },
 
   // You can define custom pages to override the built-in pages.

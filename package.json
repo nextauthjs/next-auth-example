@@ -1,6 +1,6 @@
 {
   "name": "next-auth-example",
-  "version": "3.0.0-beta.18",
+  "version": "3.0.0-beta.19",
   "description": "An example website that uses next-auth@beta",
   "repository": "https://github.com/iaincollins/next-auth-example.git",
   "homepage": "http://next-auth-example.now.sh",
@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "next": "^9.4.4",
-    "next-auth": "^3.0.0-beta.18",
+    "next-auth": "^3.0.0-beta.19",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "sqlite3": "^4.2.0"

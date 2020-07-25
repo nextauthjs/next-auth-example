@@ -1,8 +1,9 @@
 import { Provider } from 'next-auth/client'
 import './styles.css'
 
-// @NOTE: These options are new in v3 beta and are work in progress
-export default ({ Component, pageProps }) => {
+// Use the <Provider> to improve performance and allow components that call
+// `useSession()` anywhere in your application to access the `session` object.
+export default function App ({ Component, pageProps }) {
   return (
     <Provider
       // Provider options are not required but can be useful in situations where

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import styles from './footer.module.css'
+import { version } from '../package.json'
 
 export default function Footer () {
   return (
@@ -10,7 +11,7 @@ export default function Footer () {
         <li className={styles.navItem}><a href="https://www.npmjs.com/package/next-auth">NPM</a></li>
         <li className={styles.navItem}><a href="https://github.com/iaincollins/next-auth-example">GitHub</a></li>
         <li className={styles.navItem}><Link href="/policy"><a>Policy</a></Link></li>
-        <li className={styles.navItem}><em>next-auth@3.0.0-beta.19</em></li>
+        <li className={styles.navItem}><em>{version}</em></li>
       </ul>
     </footer>
   )

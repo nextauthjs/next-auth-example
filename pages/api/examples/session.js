@@ -3,6 +3,5 @@ import { getSession } from 'next-auth/client'
 
 export default async (req, res) => {
   const session = await getSession({ req })
-  console.log('Session', JSON.stringify(session, null, 2))
-  res.end()
+  res.send(JSON.stringify(session, null, 2))
 }

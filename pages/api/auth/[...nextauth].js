@@ -100,10 +100,15 @@ const options = {
   // Callbacks are asynchronous functions you can use to control what happens
   // when an action is performed.
   // https://next-auth.js.org/configuration/callbacks 
-  callbacks: { },
+  callbacks: { 
+    // signIn: async (user, account, profile) => { return Promise.resolve(true) },
+    // redirect: async (url, baseUrl) => { return Promise.resolve(baseUrl) },
+    // session: async (session, user) => { return Promise.resolve(session) },
+    // jwt: async (token, user, account, profile, isNewUser) => { return Promise.resolve(token) }
+  },
 
   // Events are useful for logging
-  // https://next-auth.js.org/configuration/options#events
+  // https://next-auth.js.org/configuration/events
   events: { },
 
   // Enable debug messages in the console if you are having problems

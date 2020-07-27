@@ -1,8 +1,8 @@
 {
   "name": "next-auth-example",
   "version": "3.0.0-beta.26",
-  "description": "An example website that uses next-auth@beta",
-  "repository": "https://github.com/iaincollins/next-auth-example.git",
+  "description": "An example website for NextAuth.js",
+  "repository": "https://github.com/nextauthjs/next-auth-example.git",
   "homepage": "http://next-auth-example.now.sh",
   "main": "",
   "scripts": {

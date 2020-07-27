@@ -19,18 +19,9 @@ const options = {
         keyId: process.env.APPLE_KEY_ID,
       }
     }),
-    Providers.Auth0({
-      clientId: process.env.AUTH0_ID,
-      clientSecret: process.env.AUTH0_SECRET,
-      domain: process.env.AUTH0_DOMAIN
-    }),
     Providers.Facebook({
       clientId: process.env.FACEBOOK_ID,
       clientSecret: process.env.FACEBOOK_SECRET
-    }),
-    Providers.GitHub({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET
     }),
     Providers.Google({
       clientId: process.env.GOOGLE_ID,

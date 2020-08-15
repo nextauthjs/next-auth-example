@@ -1,5 +1,4 @@
 import { signIn } from 'next-auth/client'
-import Layout from '../components/layout'
 
 export default function AccessDenied () {
   return (

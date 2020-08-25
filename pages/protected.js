@@ -26,8 +26,7 @@ export default function Page () {
   // If session exists, display content
   return (
     <Layout>
-      <h1>Private Page</h1>
-      <p>This page is private, you must be signed in to access it.</p>
+      <h1>Protected Page</h1>
       <p><strong>{content}</strong></p>
     </Layout>
   )

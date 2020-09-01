@@ -29,7 +29,7 @@ export default function Header () {
               </a>
           </>}
           {session && <>
-            <span style={{backgroundImage: `url(${session.user.image})` }} className={styles.avatar}/>
+            {session.user.image && <span style={{backgroundImage: `url(${session.user.image})` }} className={styles.avatar}/>}
             <span className={styles.signedInText}>
               <small>Signed in as</small><br/>
               <strong>{session.user.email || session.user.name}</strong>

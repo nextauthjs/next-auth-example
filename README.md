@@ -16,7 +16,7 @@ Go to [next-auth.js.org](https://next-auth.js.org) for more information and docu
 
 ## Getting started
 
-### 1. Clone the repository and install dependancies
+### 1. Clone the repository and install dependencies
 
 ```
 git clone https://github.com/iaincollins/next-auth-example.git

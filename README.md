@@ -79,11 +79,11 @@ Notes:
 * The example .env specifies an in-memory SQLite database that does not persist data.
 * SQLite is suitable for development / testing but not for production.
 * The option `?synchronize=true` automatically syncs schema changes to the database. It should not be used in production as may result in data loss if there are changes to the schema or to NextAuth.js
-* You can also specify a [TypeORM connection object](https://typeorm.io/#/connection-options) in `pages/api/auth/[...nextauth.js]` instead of a database URL / connection string.
+* You can also specify a [TypeORM connection object](https://typeorm.io/#/connection-options) in `pages/api/auth/[...nextauth].js` instead of a database URL / connection string.
 
 ### 3. Configure authentication providers
 
-* Review and update options in `pages/api/auth/[...nextauth.js]` as needed.
+* Review and update options in `pages/api/auth/[...nextauth].js` as needed.
 
 * When setting up OAUTH, in the developer admin page for each of your OAuth services, you should configure the callback URL to use a callback path of `{server}/api/auth/callback/{provider}`.
 

@@ -42,7 +42,7 @@ const options = {
     }),
   ],
   // Database optional. MySQL, Maria DB, Postgres and MongoDB are supported.
-  // https://next-auth.js.org/configuration/database
+  // https://next-auth.js.org/configuration/databases
   //
   // Notes:
   // * You must to install an appropriate node_module for your database

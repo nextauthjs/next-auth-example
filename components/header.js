@@ -53,7 +53,6 @@ export default function Header () {
           <li className={styles.navItem}><Link href="/client"><a>Client</a></Link></li>
           <li className={styles.navItem}><Link href="/server"><a>Server</a></Link></li>
           <li className={styles.navItem}><Link href="/protected"><a>Protected</a></Link></li>
-          <li className={styles.navItem}><Link href="/protected-ssr"><a>Protected(SSR)</a></Link></li>
           <li className={styles.navItem}><Link href="/api-example"><a>API</a></Link></li>
         </ul>
       </nav>

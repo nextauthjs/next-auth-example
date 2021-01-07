@@ -27,7 +27,7 @@ export default function Page () {
   return (
     <Layout>
       <h1>Protected Page</h1>
-      <p><strong>{content}</strong></p>
+      <p><strong>{content || "\u00a0"}</strong></p>
     </Layout>
   )
 }

@@ -19,7 +19,7 @@ Go to [next-auth.js.org](https://next-auth.js.org) for more information and docu
 ### 1. Clone the repository and install dependancies
 
 ```
-git clone https://github.com/iaincollins/next-auth-example.git
+git clone https://github.com/nextauthjs/next-auth-example.git
 cd next-auth-example
 npm i
 ```
@@ -85,7 +85,7 @@ Notes:
 
 * Review and update options in `pages/api/auth/[...nextauth].js` as needed.
 
-* When setting up OAUTH, in the developer admin page for each of your OAuth services, you should configure the callback URL to use a callback path of `{server}/api/auth/callback/{provider}`.
+* When setting up OAuth, in the developer admin page for each of your OAuth services, you should configure the callback URL to use a callback path of `{server}/api/auth/callback/{provider}`.
 
   e.g. For Google OAuth you would use: `http://localhost:3000/api/auth/callback/google`
 
@@ -114,9 +114,9 @@ You must set the NEXTAUTH_URL environment variable with the URL of your site, be
 
 e.g. `NEXTAUTH_URL=https://example.com`
 
-To do this in on Vercel, you can use the [Vercel project dashboard](https://vercel.com/dashboard) or the `now env` command:
+To do this in on Vercel, you can use the [Vercel project dashboard](https://vercel.com/dashboard) or the `vc env` command:
 
-    now env add NEXTAUTH_URL production
+    vc env add NEXTAUTH_URL production
 
 Be sure to also set environment variables for the Client ID and Client Secret values for all your authentication providers.
 

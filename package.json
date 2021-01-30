@@ -1,8 +1,12 @@
 {
   "name": "next-auth-example",
-  "version": "3.1.1",
+  "version": "0.0.0",
+  "private": true,
   "description": "An example project for NextAuth.js",
   "repository": "https://github.com/nextauthjs/next-auth-example.git",
+  "bugs": {
+    "url": "https://github.com/nextauthjs/next-auth/issues"
+  },
   "homepage": "http://next-auth-example.now.sh",
   "main": "",
   "scripts": {
@@ -13,10 +17,10 @@
   "author": "Iain Collins <me@iaincollins.com>",
   "license": "ISC",
   "dependencies": {
-    "next": "^10.0.5",
-    "next-auth": "^3.1.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "sqlite3": "^4.2.0"
+    "next": "^10.0.6",
+    "next-auth": "^3.2.0-canary.42",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "sqlite3": "^5.0.1"
   }
 }

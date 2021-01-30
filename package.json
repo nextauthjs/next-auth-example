@@ -15,6 +15,9 @@
     "start": "next start"
   },
   "author": "Iain Collins <me@iaincollins.com>",
+  "contributors": [
+    "Balázs Orbán <info@balazsorban.com>"
+  ],
   "license": "ISC",
   "dependencies": {
     "next": "^10.0.6",

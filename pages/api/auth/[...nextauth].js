@@ -84,6 +84,8 @@ export default NextAuth({
   },
 
   // You can define custom pages to override the built-in pages.
+  // For custom pages the ensure that they are placed in path outside of the '/api' folder
+  // e.g. signIn: '/auth/mycustom-signin'
   // The routes shown here are the default URLs that will be used when a custom
   // pages is not specified for that route.
   // https://next-auth.js.org/configuration/pages

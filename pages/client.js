@@ -5,7 +5,7 @@ export default function Page () {
     <Layout>
       <h1>Client Side Rendering</h1>
       <p>
-        This page uses the <strong>useSession()</strong> React Hook in the <strong>&lt;/Header&gt;</strong> component.
+        This page uses the <strong>useSession()</strong> React Hook in the <strong>&lt;Header/&gt;</strong> component.
       </p>
       <p>
         The <strong>useSession()</strong> React Hook easy to use and allows pages to render very quickly.

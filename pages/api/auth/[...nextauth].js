@@ -83,7 +83,8 @@ export default NextAuth({
     // decode: async ({ secret, token, maxAge }) => {},
   },
 
-  // You can define custom pages to override the built-in pages.
+  // You can define custom pages to override the built-in ones. These will be regular Next.js pages
+  // so ensure that they are placed outside of the '/api' folder, e.g. signIn: '/auth/mycustom-signin'
   // The routes shown here are the default URLs that will be used when a custom
   // pages is not specified for that route.
   // https://next-auth.js.org/configuration/pages

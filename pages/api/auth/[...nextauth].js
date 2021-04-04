@@ -45,7 +45,7 @@ export default NextAuth({
   // https://next-auth.js.org/configuration/databases
   //
   // Notes:
-  // * You must to install an appropriate node_module for your database
+  // * You must install an appropriate node_module for your database
   // * The Email provider requires a database (OAuth providers do not)
   database: process.env.DATABASE_URL,
 

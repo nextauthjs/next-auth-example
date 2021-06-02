@@ -96,7 +96,7 @@ npm start
 
 You must set the `NEXTAUTH_URL` environment variable with the URL of your site, before deploying to production.
 
-e.g. in your `.env.localec` file - `NEXTAUTH_URL=https://example.com`
+e.g. in your `.env.local` file - `NEXTAUTH_URL=https://example.com`
 
 To do this with Vercel, you can use the [Vercel project dashboard](https://vercel.com/dashboard) or their cli via the `vc env` command:
 

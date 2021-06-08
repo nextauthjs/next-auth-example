@@ -10,6 +10,9 @@ export default NextAuth({
       server: process.env.EMAIL_SERVER,
       from: process.env.EMAIL_FROM,
     }),
+    // Temporarily removing the Apple provider from the demo site as the
+    // callback URL for it needs updating due to Vercel changing domains
+    /*
     Providers.Apple({
       clientId: process.env.APPLE_ID,
       clientSecret: {
@@ -19,6 +22,7 @@ export default NextAuth({
         keyId: process.env.APPLE_KEY_ID,
       },
     }),
+    */
     Providers.Auth0({
       clientId: process.env.AUTH0_ID,
       clientSecret: process.env.AUTH0_SECRET,

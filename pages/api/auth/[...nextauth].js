@@ -113,6 +113,10 @@ export default NextAuth({
   // Events are useful for logging
   // https://next-auth.js.org/configuration/events
   events: {},
+  
+  // You can set the theme to 'light', 'dark' or use 'auto' to default to the
+  // whatever prefers-color-scheme is set to in the browser. Default is 'auto'
+  theme: 'light',
 
   // Enable debug messages in the console if you are having problems
   debug: false,

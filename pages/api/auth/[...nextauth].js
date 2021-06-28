@@ -30,6 +30,8 @@ export default NextAuth({
     Providers.GitHub({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
+      // https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps
+      scope: "read:user"
     }),
     Providers.Google({
       clientId: process.env.GOOGLE_ID,
@@ -113,7 +115,7 @@ export default NextAuth({
   // Events are useful for logging
   // https://next-auth.js.org/configuration/events
   events: {},
-  
+
   // You can set the theme to 'light', 'dark' or use 'auto' to default to the
   // whatever prefers-color-scheme is set to in the browser. Default is 'auto'
   theme: 'light',

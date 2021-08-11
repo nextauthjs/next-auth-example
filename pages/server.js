@@ -1,4 +1,4 @@
-import { useSession, getSession } from 'next-auth/client'
+import { useSession, getSession } from 'next-auth/react'
 import Layout from '../components/layout'
 
 export default function Page () {
@@ -6,7 +6,8 @@ export default function Page () {
   // populated on render without needing to go through a loading stage.
   // This is possible because of the shared context configured in `_app.js` that
   // is used by `useSession()`.
-  const [ session, loading ] = useSession()
+  const { data: session, status } = useSession()
+	const loading = status === 'loading'
 
   return (
     <Layout>

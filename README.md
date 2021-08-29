@@ -88,8 +88,8 @@ npm run dev
 To run it it production mode, use:
 
 ```
-npm build
-npm start
+npm run build
+npm run start
 ```
 
 ### 5. Preparing for Production

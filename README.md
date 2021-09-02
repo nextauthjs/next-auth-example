@@ -36,7 +36,7 @@ Go to [next-auth.js.org](https://next-auth.js.org) for more information and docu
 
 ## Getting Started
 
-### 1. Clone the repository and install dependancies
+### 1. Clone the repository and install dependencies
 
 ```
 git clone https://github.com/nextauthjs/next-auth-example.git
@@ -85,7 +85,7 @@ To run your site locally, use:
 npm run dev
 ```
 
-To run it it production mode, use:
+To run it in production mode, use:
 
 ```
 npm run build

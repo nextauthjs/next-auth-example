@@ -3,7 +3,7 @@ import { NextResponse } from "next/server"
 
 export async function middleware(req) {
   // return early if url isn't supposed to be protected
-  if (req.url !== "/middleware-protected") {
+  if (!req.url.includes("/middleware-protected")) {
     return NextResponse.next()
   }
 

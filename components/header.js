@@ -41,7 +41,7 @@ export default function Header() {
             <>
               {session.user.image && (
                 <span
-                  style={{ backgroundImage: `url(${session.user.image})` }}
+                  style={{ backgroundImage: `url('${session.user.image}')` }}
                   className={styles.avatar}
                 />
               )}

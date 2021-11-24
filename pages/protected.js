@@ -4,7 +4,8 @@ import Layout from "../components/layout";
 import AccessDenied from "../components/access-denied";
 
 export default function Page() {
-  const [session, loading] = useSession();
+  const { data: session, status } = useSession();
+  const loading = status === "loading";
   const [content, setContent] = useState();
 
   // Fetch content from protected route

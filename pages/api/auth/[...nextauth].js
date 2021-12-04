@@ -50,7 +50,7 @@ export default NextAuth({
     Auth0Provider({
       clientId: process.env.AUTH0_ID,
       clientSecret: process.env.AUTH0_SECRET,
-      domain: process.env.AUTH0_DOMAIN,
+      issuer: process.env.AUTH0_ISSUER,
     }),
   ],
   // The secret should be set to a reasonably long random string.

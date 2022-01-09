@@ -4,6 +4,7 @@ import { NextResponse } from "next/server"
 /** @param {import("next/server").NextRequest} req */
 export async function middleware(req) {
   if (req.nextUrl.pathname === "/middleware-protected") {
+    
     const session = await getToken({
       req,
       secret: process.env.SECRET,

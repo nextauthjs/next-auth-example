@@ -7,7 +7,7 @@
   "bugs": {
     "url": "https://github.com/nextauthjs/next-auth/issues"
   },
-  "homepage": "http://next-auth-example.now.sh",
+  "homepage": "https://next-auth-example.vercel.app",
   "main": "",
   "scripts": {
     "dev": "next",

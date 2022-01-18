@@ -21,8 +21,8 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "next": "^12.0.7",
-    "next-auth": "latest",
+    "next": "^12.0.8",
+    "next-auth": "0.0.0-pr.3657.1ce622f7",
     "nodemailer": "^6.6.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"

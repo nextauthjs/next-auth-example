@@ -24,6 +24,8 @@ NextAuth.js is a complete open source authentication solution for [Next.js](http
 
 This is an example application which shows how `next-auth` is applied to a basic Next.js app. It is also used in many of our CI workflows and other places where a concrete usage example is necessary. 
 
+This example is based on Next.js 12 and uses [Middleware](https://nextjs.org/blog/next-12#introducing-middleware).
+
 It can be found at [`next-auth-example.vercel.app`](https://next-auth-example.vercel.app/)
 
 ### About NextAuth.js

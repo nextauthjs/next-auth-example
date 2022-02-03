@@ -4,9 +4,6 @@ import { withAuth } from "next-auth/middleware";
 // More on how NextAuth middleware works: https://docs-git-misc-docs-nextauthjs.vercel.app/configuration/nextjs
 export default withAuth({
   callbacks: {
-    authorized: ({ token }) => {
-      console.log(token);
-      return token?.userRole === "admin";
-    },
+    authorized: ({ token }) => token?.userRole === "admin",
   },
 });

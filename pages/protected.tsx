@@ -37,7 +37,7 @@ export default function ProtectedPage() {
     <Layout>
       <h1>Protected Page</h1>
       <p>
-        <strong>{content || "\u00a0"}</strong>
+        <strong>{content ?? "\u00a0"}</strong>
       </p>
     </Layout>
   )

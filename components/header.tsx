@@ -37,7 +37,7 @@ export default function Header() {
               </a>
             </>
           )}
-          {session && (
+          {session?.user && (
             <>
               {session.user.image && (
                 <span
@@ -48,7 +48,7 @@ export default function Header() {
               <span className={styles.signedInText}>
                 <small>Signed in as</small>
                 <br />
-                <strong>{session.user.email || session.user.name}</strong>
+                <strong>{session.user.email ?? session.user.name}</strong>
               </span>
               <a
                 href={`/api/auth/signout`}
@@ -92,8 +92,8 @@ export default function Header() {
             </Link>
           </li>
           <li className={styles.navItem}>
-            <Link href="/middleware-protected">
-              <a>Middleware protected</a>
+            <Link href="/admin">
+              <a>Admin</a>
             </Link>
           </li>
         </ul>

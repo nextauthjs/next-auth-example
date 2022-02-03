@@ -1,4 +1,4 @@
-import Layout from "../components/layout";
+import Layout from "../components/layout"
 
 export default function ApiExamplePage() {
   return (
@@ -15,5 +15,5 @@ export default function ApiExamplePage() {
       <p>/api/examples/jwt</p>
       <iframe src="/api/examples/jwt" />
     </Layout>
-  );
+  )
 }

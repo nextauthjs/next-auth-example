@@ -1,14 +1,14 @@
-import { useSession, getSession } from "next-auth/react";
-import Layout from "../components/layout";
-import type { NextPageContext } from "next";
+import { useSession, getSession } from "next-auth/react"
+import Layout from "../components/layout"
+import type { NextPageContext } from "next"
 
 export default function ServerSidePage() {
   // As this page uses Server Side Rendering, the `session` will be already
   // populated on render without needing to go through a loading stage.
   // This is possible because of the shared context configured in `_app.js` that
   // is used by `useSession()`.
-  const { data: session, status } = useSession();
-  const loading = status === "loading";
+  const { data: session, status } = useSession()
+  const loading = status === "loading"
 
   return (
     <Layout>
@@ -31,7 +31,7 @@ export default function ServerSidePage() {
         render.
       </p>
     </Layout>
-  );
+  )
 }
 
 // Export the `session` prop to use sessions with Server Side Rendering
@@ -40,5 +40,5 @@ export async function getServerSideProps(context: NextPageContext) {
     props: {
       session: await getSession(context),
     },
-  };
+  }
 }

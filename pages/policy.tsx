@@ -1,4 +1,4 @@
-import Layout from "../components/layout";
+import Layout from "../components/layout"
 
 export default function PolicyPage() {
   return (
@@ -28,5 +28,5 @@ export default function PolicyPage() {
         for the purposes of authentication.
       </p>
     </Layout>
-  );
+  )
 }

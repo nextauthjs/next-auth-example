@@ -1,5 +1,6 @@
 import { useSession, getSession } from "next-auth/react";
 import Layout from "../components/layout";
+import type { NextPageContext } from "next";
 
 export default function ServerSidePage() {
   // As this page uses Server Side Rendering, the `session` will be already
@@ -34,7 +35,7 @@ export default function ServerSidePage() {
 }
 
 // Export the `session` prop to use sessions with Server Side Rendering
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: NextPageContext) {
   return {
     props: {
       session: await getSession(context),

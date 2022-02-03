@@ -18,7 +18,8 @@
   "author": "Iain Collins <me@iaincollins.com>",
   "contributors": [
     "Balázs Orbán <info@balazsorban.com>",
-    "Nico Domino <yo@ndo.dev>"
+    "Nico Domino <yo@ndo.dev>",
+    "Lluis Agusti <hi@llu.lu>"
   ],
   "license": "ISC",
   "dependencies": {

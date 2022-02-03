@@ -96,6 +96,11 @@ export default function Header() {
               <a>Admin</a>
             </Link>
           </li>
+          <li className={styles.navItem}>
+            <Link href="/me">
+              <a>Me</a>
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>

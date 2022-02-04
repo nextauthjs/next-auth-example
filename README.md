@@ -15,6 +15,9 @@
       <a href="https://www.npmtrends.com/next-auth">
         <img src="https://img.shields.io/npm/dm/next-auth?label=next-auth%20downloads" alt="Downloads" />
       </a>
+      <a href="https://npm.im/next-auth">
+        <img src="https://img.shields.io/badge/npm-TypeScript-blue" alt="TypeScript" />
+      </a>
    </p>
 </p>
 

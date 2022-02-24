@@ -1,0 +1,9 @@
+@host=http://localhost:3000
+
+#Below token can be extracted by asking getToken({req, raw:true})
+# or by going to Application tab in chrome dev console>Application>Cookies>next-auth.session-token
+@tokenKey=<raw_token> 
+
+GET {{host}}/api/examples/session HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{tokenKey}}

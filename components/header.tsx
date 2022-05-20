@@ -71,6 +71,7 @@ export default function Header() {
               <a>Home</a>
             </Link>
           </li>
+          {/*
           <li className={styles.navItem}>
             <Link href="/client">
               <a>Client</a>
@@ -96,6 +97,7 @@ export default function Header() {
               <a>Admin</a>
             </Link>
           </li>
+          */}
           <li className={styles.navItem}>
             <Link href="/me">
               <a>Me</a>

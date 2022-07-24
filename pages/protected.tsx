@@ -20,8 +20,11 @@ export default function ProtectedPage() {
     fetchData()
   }, [session])
 
-  // When rendering client side don't display anything until loading is complete
-  if (typeof window !== "undefined" && loading) return null
+  // Server renders this contents unless you pass session to
+  // getServerSideProps. See `server.tsx` for the detail.
+  if (loading) {
+    return <Layout>Loading a session</Layout>
+  }
 
   // If no session exists, display access denied message
   if (!session) {

@@ -20,7 +20,7 @@ export default function ProtectedPage() {
     fetchData()
   }, [session])
 
-  // Server renders this contents unless you pass session to
+  // Server renders this content unless you pas thes session to
   // getServerSideProps. See `server.tsx` for the detail.
   if (loading) {
     return <Layout>Loading a session</Layout>

@@ -18,7 +18,7 @@ export default function Footer() {
         </li>
         <li className={styles.navItem}>
           <Link href="/policy">
-            <a>Policy</a>
+            Policy
           </Link>
         </li>
         <li className={styles.navItem}>

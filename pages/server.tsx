@@ -1,11 +1,13 @@
 import { unstable_getServerSession } from "next-auth/next"
+import { useSession } from "next-auth/react"
 import { authOptions } from "./api/auth/[...nextauth]"
 import Layout from "../components/layout"
 
 import type { GetServerSidePropsContext } from "next"
-import type { Session } from "next-auth"
 
-export default function ServerSidePage({ session }: { session: Session }) {
+
+export default function ServerSidePage() {
+  const { data: session } = useSession()
   // As this page uses Server Side Rendering, the `session` will be already
   // populated on render without needing to go through a loading stage.
   return (
@@ -35,13 +37,14 @@ export default function ServerSidePage({ session }: { session: Session }) {
 
 // Export the `session` prop to use sessions with Server Side Rendering
 export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const session = await unstable_getServerSession(
+    context.req,
+    context.res,
+    authOptions
+  );
   return {
     props: {
-      session: await unstable_getServerSession(
-        context.req,
-        context.res,
-        authOptions
-      ),
+      session: JSON.parse(JSON.stringify(session)),
     },
   }
 }

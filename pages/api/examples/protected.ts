@@ -1,4 +1,4 @@
-// This is an example of to protect an API route
+// This is an example of how to protect an API route
 import { unstable_getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
 

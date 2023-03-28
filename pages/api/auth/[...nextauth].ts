@@ -1,9 +1,10 @@
-import NextAuth, { NextAuthOptions } from "next-auth"
-import GoogleProvider from "next-auth/providers/google"
-import FacebookProvider from "next-auth/providers/facebook"
-import GithubProvider from "next-auth/providers/github"
-import TwitterProvider from "next-auth/providers/twitter"
-import Auth0Provider from "next-auth/providers/auth0"
+import NextAuth, { NextAuthOptions } from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
+import FacebookProvider from "next-auth/providers/facebook";
+import GithubProvider from "next-auth/providers/github";
+import TwitterProvider from "next-auth/providers/twitter";
+import Auth0Provider from "next-auth/providers/auth0";
+import CredentialsProvider from "next-auth/providers/credentials";
 // import AppleProvider from "next-auth/providers/apple"
 // import EmailProvider from "next-auth/providers/email"
 
@@ -29,6 +30,20 @@ export const authOptions: NextAuthOptions = {
       },
     }),
     */
+    CredentialsProvider({
+      credentials: { password: { label: "Password", type: "password" } },
+      async authorize(credentials) {
+        if (credentials?.password !== "pw") return null;
+        return {
+          name: "Fill Murray",
+          email: "bill@fillmurray.com",
+          image:
+            "https://img.freepik.com/free-photo/closeup-shot-beagle-sunglasses-with-blurry-background_181624-44426.jpg",
+          id: "1",
+          foo: "",
+        };
+      },
+    }),
     FacebookProvider({
       clientId: process.env.FACEBOOK_ID,
       clientSecret: process.env.FACEBOOK_SECRET,
@@ -56,10 +71,10 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async jwt({ token }) {
-      token.userRole = "admin"
-      return token
+      token.userRole = "admin";
+      return token;
     },
   },
-}
+};
 
-export default NextAuth(authOptions)
+export default NextAuth(authOptions);

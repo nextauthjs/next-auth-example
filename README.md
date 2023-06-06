@@ -70,7 +70,7 @@ For more information about setting up a database, please check out the following
 
 ### 3. Configure Authentication Providers
 
-1. Review and update options in `pages/api/auth/[...nextauth].js` as needed.
+1. Review and update options in `app/api/auth/[...nextauth]/route.ts` as needed.
 
 2. When setting up OAuth, in the developer admin page for each of your OAuth services, you should configure the callback URL to use a callback path of `{server}/api/auth/callback/{provider}`.
 

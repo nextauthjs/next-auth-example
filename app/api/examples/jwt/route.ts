@@ -8,5 +8,5 @@ export async function GET(req: NextRequest) {
   // If you don't have the NEXTAUTH_SECRET environment variable set,
   // you will have to pass your secret as `secret` to `getToken`
   const token = await getToken({ req });
-  return NextResponse.json(JSON.stringify(token, null, 2));
+  return NextResponse.json(token);
 }

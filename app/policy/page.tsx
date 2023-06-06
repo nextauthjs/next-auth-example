@@ -1,10 +1,8 @@
-import Layout from "../components/layout"
-
 export default function PolicyPage() {
   return (
-    <Layout>
+    <>
       <p>
-        This is an example site to demonstrate how to use{" "}
+        This is an example site to demonstrate how to use{' '}
         <a href="https://next-auth.js.org">NextAuth.js</a> for authentication.
       </p>
       <h2>Terms of Service</h2>
@@ -27,6 +25,6 @@ export default function PolicyPage() {
         is not passed to any third party services, other than via SMTP or OAuth
         for the purposes of authentication.
       </p>
-    </Layout>
-  )
+    </>
+  );
 }

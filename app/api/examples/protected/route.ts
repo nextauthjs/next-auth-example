@@ -14,7 +14,7 @@ export async function GET() {
     });
   }
 
-  NextResponse.json({
+  return NextResponse.json({
     error: 'You must be signed in to view the protected content on this page.',
   });
 }

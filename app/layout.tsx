@@ -1,8 +1,8 @@
 import './styles.css';
 
 import AuthProvider from '../lib/auth/AuthProvider';
-import Header from '../lib/components/header';
-import Footer from '../lib/components/footer';
+import Header from '../components/header';
+import Footer from '../components/footer';
 
 export const metadata = {
   title: 'Next.js',

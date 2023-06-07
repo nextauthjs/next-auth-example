@@ -14,9 +14,9 @@ export default function ClientPage() {
       </p>
       <p>
         The advantage of this approach is that session state is shared between
-        pages by using the <strong>Provider</strong> in <strong>_app.js</strong>{' '}
-        so that navigation between pages using <strong>useSession()</strong> is
-        very fast.
+        pages by using the <strong>Provider</strong> in the root{' '}
+        <strong>page.ts</strong> file so that navigation between pages using{' '}
+        <strong>useSession()</strong> is very fast.
       </p>
       <p>
         The disadvantage of <strong>useSession()</strong> is that it requires

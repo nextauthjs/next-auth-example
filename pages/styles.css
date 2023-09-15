@@ -5,8 +5,8 @@ body {
   padding: 0 1rem 1rem 1rem;
   max-width: 680px;
   margin: 0 auto;
-  background: #fff;
-  color: #333;
+  background: #000000;
+  color: #c7c7c7;
 }
 
 li,
@@ -16,6 +16,7 @@ p {
 
 a {
   font-weight: 500;
+  color: #525252;
 }
 
 hr {
@@ -23,7 +24,7 @@ hr {
 }
 
 iframe {
-  background: #ccc;
+  background: #212121;
   border: 1px solid #ccc;
   height: 10rem;
   width: 100%;

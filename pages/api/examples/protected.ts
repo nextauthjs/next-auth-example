@@ -1,22 +1,27 @@
-// This is an example of to protect an API route
+import type { NextApiRequest, NextApiResponse } from "next";
+import { getToken } from "next-auth/jwt";
 
-import { auth } from "auth"
-import type { NextApiRequest, NextApiResponse } from "next"
+const secret = process.env.NEXTAUTH_SECRET;
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const session = await auth(req, res)
+  const token = await getToken({ req, secret });
 
-  if (session) {
+  if (!token || !token.sub)
+    return res.send({
+      error: "Please authenticate your wallet to continue.",
+    });
+
+  if (token) {
     return res.send({
       content:
-        "This is protected content. You can access this content because you are signed in.",
-    })
+        "Congrats, you can view this page!",
+    });
   }
 
   res.send({
-    error: "You must be signed in to view the protected content on this page.",
-  })
+    error: "You must be signed in with your Solana Wallet to view the protected content on this page.",
+  });
 }

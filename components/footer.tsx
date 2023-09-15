@@ -8,19 +8,16 @@ export default function Footer() {
       <hr />
       <ul className={styles.navItems}>
         <li className={styles.navItem}>
-          <a href="https://next-auth.js.org">Documentation</a>
+          <a href="https://phnx.one/">phnx.one</a>
         </li>
         <li className={styles.navItem}>
-          <a href="https://www.npmjs.com/package/next-auth">NPM</a>
+          <a href="https://phnx.one/whitepaper/">Whitepaper</a>
         </li>
         <li className={styles.navItem}>
-          <a href="https://github.com/nextauthjs/next-auth-example">GitHub</a>
+          <a href="https://github.com/PhoenixSolana">GitHub</a>
         </li>
         <li className={styles.navItem}>
-          <Link href="/policy">Policy</Link>
-        </li>
-        <li className={styles.navItem}>
-          <em>next-auth@{packageJSON.dependencies["next-auth"]}</em>
+          <em>Phoenix²</em>
         </li>
       </ul>
     </footer>

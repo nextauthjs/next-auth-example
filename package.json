@@ -18,10 +18,18 @@
     "Lluis Agusti <hi@llu.lu>"
   ],
   "dependencies": {
+    "@solana-mobile/wallet-adapter-mobile": "^2.0.1",
+    "@solana/wallet-adapter-base": "^0.9.23",
+    "@solana/wallet-adapter-react": "^0.15.35",
+    "@solana/wallet-adapter-react-ui": "^0.9.34",
+    "@solana/wallet-adapter-wallets": "^0.19.22",
+    "@solana/web3.js": "^1.78.4",
+    "bs58": "^5.0.0",
     "next": "latest",
     "next-auth": "latest",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tweetnacl": "^1.0.3"
   },
   "devDependencies": {
     "@types/node": "^18.16.2",

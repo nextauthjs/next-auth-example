@@ -65,13 +65,13 @@
   position: relative;
   z-index: 10;
   background-color: transparent;
-  color: #555;
+  color: #c7c7c7;
 }
 
 .buttonPrimary {
-  background-color: #346df1;
+  background-color: #500000;
   border-color: #346df1;
-  color: #fff;
+  color: #c7c7c7;
   text-decoration: none;
   padding: 0.7rem 1.4rem;
 }

@@ -1,4 +1,4 @@
-// This is an example of to protect an API route
+// This is an example of how to protect an API route
 
 import { auth } from "auth"
 import type { NextApiRequest, NextApiResponse } from "next"

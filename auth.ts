@@ -7,7 +7,6 @@ export const config = {
   providers: [
     GitHub,
   ],
-  basePath: "/auth",
   callbacks: {
     authorized({ request, auth }) {
       const { pathname } = request.nextUrl

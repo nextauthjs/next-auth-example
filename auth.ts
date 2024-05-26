@@ -1,74 +1,54 @@
-import NextAuth from "next-auth"
-import "next-auth/jwt"
+import NextAuth from "next-auth";
+import Google from "next-auth/providers/google";
 
-import Apple from "next-auth/providers/apple"
-import Facebook from "next-auth/providers/facebook"
-import Google from "next-auth/providers/google"
-import LinkedIn from "next-auth/providers/linkedin"
-import Twitter from "next-auth/providers/twitter"
-import { createStorage } from "unstorage"
-import memoryDriver from "unstorage/drivers/memory"
-import vercelKVDriver from "unstorage/drivers/vercel-kv"
-import { UnstorageAdapter } from "@auth/unstorage-adapter"
 import type { NextAuthConfig } from "next-auth"
 
-const storage = createStorage({
-  driver: process.env.VERCEL
-    ? vercelKVDriver({
-        url: process.env.AUTH_KV_REST_API_URL,
-        token: process.env.AUTH_KV_REST_API_TOKEN,
-        env: false,
-      })
-    : memoryDriver(),
-})
-
-const config = {
-  theme: { logo: "https://authjs.dev/img/logo-sm.png" },
-  adapter: UnstorageAdapter(storage),
+export const config = {
   providers: [
-    Apple,
-    Facebook,
-    Google,
-    LinkedIn,
-    Twitter,
+    Google(
+      { clientId: process.env.AUTH_GOOGLE_ID, clientSecret: process.env.AUTH_GOOGLE_SECRET }
+    )
   ],
-  basePath: "/auth",
+  basePath: "/api/auth",
   callbacks: {
     authorized({ request, auth }) {
       const { pathname } = request.nextUrl
       if (pathname === "/middleware-example") return !!auth
       return true
     },
-    jwt({ token, trigger, session, account }) {
+    jwt({ token, trigger, session }) {
       if (trigger === "update") token.name = session.user.name
-      if (account?.provider === "keycloak") {
-        return { ...token, accessToken: account.access_token }
-      }
       return token
     },
-    async session({ session, token }) {
-      if (token?.accessToken) {
-        session.accessToken = token.accessToken
-      }
-      return session
-    },
   },
-  experimental: {
-    enableWebAuthn: true,
-  },
-  debug: process.env.NODE_ENV !== "production" ? true : false,
 } satisfies NextAuthConfig
 
-export const { handlers, auth, signIn, signOut } = NextAuth(config)
+export const dev_config = {
+  providers: [
+    Google(
+      { clientId: process.env.DEV_AUTH_GOOGLE_ID, clientSecret: process.env.DEV_AUTH_GOOGLE_SECRET }
+    )
+  ],
+  basePath: "/api/auth",
+  callbacks: {
+    authorized({ request, auth }) {
+      const { pathname } = request.nextUrl
+      if (pathname === "/middleware-example") return !!auth
+      return true
+    },
+    jwt({ token, trigger, session }) {
+      if (trigger === "update") token.name = session.user.name
+      return token
+    },
+  },
+} satisfies NextAuthConfig
 
-declare module "next-auth" {
-  interface Session {
-    accessToken?: string
-  }
+let configuration;
+
+if (process.env.NODE_ENV === "development") {
+  configuration = dev_config;
+} else {
+  configuration = config;
 }
 
-declare module "next-auth/jwt" {
-  interface JWT {
-    accessToken?: string
-  }
-}
+export const { handlers, auth, signIn, signOut } = NextAuth(configuration)

@@ -21,6 +21,7 @@ import LinkedIn from "next-auth/providers/linkedin"
 import MicrosoftEntraId from "next-auth/providers/microsoft-entra-id"
 import Netlify from "next-auth/providers/netlify"
 import Okta from "next-auth/providers/okta"
+import Ory from "next-auth/providers/ory"
 import Passage from "next-auth/providers/passage"
 import Passkey from "next-auth/providers/passkey"
 import Pinterest from "next-auth/providers/pinterest"
@@ -77,6 +78,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     MicrosoftEntraId,
     Netlify,
     Okta,
+    Ory,
     Passkey({
       formFields: {
         email: {

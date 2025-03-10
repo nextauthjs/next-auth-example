@@ -1,22 +1,19 @@
 {
   "private": true,
-  "description": "An example project for NextAuth.js with Next.js",
-  "repository": "https://github.com/nextauthjs/next-auth-example.git",
+  "description": "Auth temp made by Boogeyman",
+  "repository": "https://github.com/Boogeyman-dev/auth-temp.git",
   "bugs": {
-    "url": "https://github.com/nextauthjs/next-auth/issues"
+    "url": "https://github.com/Boogeyman-dev/auth-temp/issues"
   },
-  "homepage": "https://next-auth-example.vercel.app",
+  "homepage": "https://auth-temp.vercel.app",
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start"
   },
-  "author": "Iain Collins <me@iaincollins.com>",
+  "author": " Boogeyman <booogeymanxd@gmail.com>",
   "contributors": [
-    "Balázs Orbán <info@balazsorban.com>",
-    "Nico Domino <yo@ndo.dev>",
-    "Lluis Agusti <hi@llu.lu>",
-    "Thang Huu Vu <hi@thvu.dev>"
+    "Boogeyman <booogeymanxd@gmail.com>"
   ],
   "dependencies": {
     "@auth/unstorage-adapter": "^2.0.0",

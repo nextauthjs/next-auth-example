@@ -19,7 +19,8 @@ import { Button } from "./ui/button"
 export function MainNav() {
   return (
     <div className="flex items-center gap-4">
-      <CustomLink href="/">
+      <div className="text-2xl font-bold">NameofWeb</div>
+      <CustomLink href="/" className="pr-7">
         <Button variant="ghost" className="p-0">
           <Image
             src="/logo.png"
@@ -34,7 +35,7 @@ export function MainNav() {
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger className="px-2">
-              Server Side
+              Menu
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -55,7 +56,15 @@ export function MainNav() {
               href="/client-example"
               className={navigationMenuTriggerStyle()}
             >
-              Client Side
+              Tools
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              href="/client-example"
+              className={navigationMenuTriggerStyle()}
+            >
+              About
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>

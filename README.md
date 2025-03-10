@@ -110,3 +110,15 @@ Follow the [Deployment documentation](https://authjs.dev/getting-started/deploym
 ## License
 
 ISC
+
+
+fully auth middleware in auth.ts
+
+u can use {?():()} in return
+const hasUser=(session?.user)
+if(hasUser){
+  return true
+}
+else{
+  return false
+}

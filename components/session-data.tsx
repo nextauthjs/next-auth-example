@@ -1,7 +1,8 @@
 import type { Session } from "next-auth"
 
 export default function SessionData({ session }: { session: Session | null }) {
-  if (session?.user) {
+  const hasUser = session?.user;
+  if (hasUser) {
     return (
       <div className="flex w-full flex-col gap-4 rounded-md bg-gray-100 p-4">
         <h2 className="text-xl font-bold">Current Session Data</h2>
@@ -18,6 +19,8 @@ export default function SessionData({ session }: { session: Session | null }) {
             the page to avoid exposing sensitive information.
           </p>
         )}
+        { hasUser ?(<div>signed in</div>):(<div>not signed</div>)}
+
         <div className="flex flex-col rounded-md bg-neutral-100">
           <div className="rounded-t-md bg-neutral-200 p-4 font-bold">
             Session
@@ -26,6 +29,8 @@ export default function SessionData({ session }: { session: Session | null }) {
             {JSON.stringify(session, null, 2)}
           </pre>
         </div>
+
+
       </div>
     )
   }

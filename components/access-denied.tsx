@@ -1,6 +1,7 @@
 import { signIn } from "next-auth/react"
 
 export default function AccessDenied() {
+  console.log("got ya")
   return (
     <>
       <h1>Access Denied</h1>

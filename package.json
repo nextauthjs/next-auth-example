@@ -29,6 +29,7 @@
     "@vercel/kv": "^1.0.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "dotenv": "^16.4.7",
     "lucide-react": "^0.274.0",
     "next": "latest",
     "next-auth": "beta",

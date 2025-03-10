@@ -14,7 +14,7 @@ const UpdateForm = () => {
   if (!session?.user) return null
   return (
     <>
-      <h2 className="text-xl font-bold">Updating the session client-side</h2>
+      <h2 className="text-xl font-bold">Updating the session name client-side</h2>
       <div className="flex w-full max-w-sm items-center space-x-2">
         <Input
           type="text"

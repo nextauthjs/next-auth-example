@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "format": " prettier -w */**.{ts,js,tsx}"
   },
   "author": "Iain Collins <me@iaincollins.com>",
   "contributors": [
@@ -18,6 +19,11 @@
     "Lluis Agusti <hi@llu.lu>",
     "Thang Huu Vu <hi@thvu.dev>"
   ],
+  "prettier": {
+    "semi": false,
+    "singleQuote": false,
+    "trailingComma": "es5"
+  },
   "dependencies": {
     "@auth/unstorage-adapter": "^2.0.0",
     "@radix-ui/react-avatar": "^1.0.3",
@@ -44,6 +50,7 @@
     "@types/react-dom": "^18.2.8",
     "autoprefixer": "^10.4.15",
     "postcss": "^8.4.29",
+    "prettier": "^3.5.3",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.2.2"
   },

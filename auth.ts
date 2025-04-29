@@ -53,85 +53,71 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   theme: { logo: "https://authjs.dev/img/logo-sm.png" },
   adapter: UnstorageAdapter(storage),
   providers: [
-    Apple,
-    // Atlassian,
-    Auth0,
-    AzureB2C,
-    BankIDNorway,
-    BoxyHQSAML({
-      clientId: "dummy",
-      clientSecret: "dummy",
-      issuer: process.env.AUTH_BOXYHQ_SAML_ISSUER,
-    }),
-    Cognito,
-    Coinbase,
-    Discord,
-    Dropbox,
-    Facebook,
-    GitHub,
-    GitLab,
-    Google,
-    Hubspot,
-    Keycloak({ name: "Keycloak (bob/bob)" }),
-    LinkedIn,
-    MicrosoftEntraId,
-    Netlify,
-    Okta,
-    Passkey({
-      formFields: {
-        email: {
-          label: "Username",
-          required: true,
-          autocomplete: "username webauthn",
-        },
+    {
+      id: "ory",
+      name: "Ory",
+      type: "oidc",
+      issuer: process.env.ORY_SDK_URL,
+      clientId: process.env.ORY_CLIENT_ID,
+      clientSecret: process.env.ORY_CLIENT_SECRET,
+      checks: ["pkce" as never, "state" as never],
+      token: {
+        idToken: true,
       },
-    }),
-    Passage,
-    Pinterest,
-    Reddit,
-    Salesforce,
-    Slack,
-    Spotify,
-    Twitch,
-    Twitter,
-    Vipps({
-      issuer: "https://apitest.vipps.no/access-management-1.0/access/",
-    }),
-    WorkOS({ connection: process.env.AUTH_WORKOS_CONNECTION! }),
-    Zoom,
+    },
   ],
   basePath: "/auth",
   session: { strategy: "jwt" },
+  // highlight-start
   callbacks: {
     authorized({ request, auth }) {
       const { pathname } = request.nextUrl
       if (pathname === "/middleware-example") return !!auth
       return true
     },
-    jwt({ token, trigger, session, account }) {
-      if (trigger === "update") token.name = session.user.name
-      if (account?.provider === "keycloak") {
-        return { ...token, accessToken: account.access_token }
+    session({ session, token }) {
+      session.sid = token.sid
+      session.idToken = token.idToken
+      return session
+    },
+    jwt({ token, account, profile }) {
+      if (profile) {
+        token.sid = profile.sid
+      }
+      if (account) {
+        token.idToken = account.id_token
       }
       return token
     },
-    async session({ session, token }) {
-      if (token?.accessToken) session.accessToken = token.accessToken
-
-      return session
-    },
   },
+  // highlight-end
   experimental: { enableWebAuthn: true },
 })
 
 declare module "next-auth" {
   interface Session {
     accessToken?: string
+    // highlight-start
+    sid: string
+    idToken?: string
+    // highlight-end
   }
 }
 
 declare module "next-auth/jwt" {
   interface JWT {
     accessToken?: string
+    // highlight-start
+    sid: string
+    idToken?: string
+    // highlight-end
   }
 }
+
+// highlight-start
+declare module "next-auth" {
+  interface Profile {
+    sid: string
+  }
+}
+// highlight-end

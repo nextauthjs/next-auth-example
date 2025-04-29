@@ -53,6 +53,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   theme: { logo: "https://authjs.dev/img/logo-sm.png" },
   adapter: UnstorageAdapter(storage),
   providers: [
+    // highlight-start
     {
       id: "ory",
       name: "Ory",
@@ -65,6 +66,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         idToken: true,
       },
     },
+    // highlight-eng
   ],
   basePath: "/auth",
   session: { strategy: "jwt" },

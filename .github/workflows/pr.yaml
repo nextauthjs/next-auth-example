@@ -1,0 +1,33 @@
+name: Pull Request Quality Gates
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.12.3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build project with mock env vars
+        env:
+          AUTH_SECRET: "mock-secret-for-ci-build"
+          GOOGLE_CLIENT_ID: "mock-client-id"
+          GOOGLE_CLIENT_SECRET: "mock-client-secret"
+        run: pnpm build

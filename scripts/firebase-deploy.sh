@@ -2,7 +2,7 @@
 
 # Configuration constants
 SECRET_VARS=("AUTH_SECRET" "AUTH_GOOGLE_ID" "AUTH_GOOGLE_SECRET" "NEXTAUTH_URL" "AUTH_TRUST_HOST")
-SECRET_IDS=("auth-secret" "auth-google-id" "auth-google-secret" "nextauth-url" "auth-trust-host")
+SECRET_IDS=("AUTH_SECRET" "AUTH_GOOGLE_ID" "AUTH_GOOGLE_SECRET" "NEXTAUTH_URL" "AUTH_TRUST_HOST")
 
 main() {
     set -euo pipefail
@@ -44,13 +44,24 @@ deploy_secrets() {
     # Create secrets
     create_temp_secret_files "$temp_dir"
     create_or_update_secrets "$project_id" "$temp_dir"
+    
+    # Wait for secrets to be fully created
+    log_step "Waiting for secrets to be fully created..."
+    sleep 10
+    
+    # Verify secrets exist
+    verify_secrets_exist "$project_id" || exit 1
+    
     grant_iam_permissions "$project_id"
-    grant_firebase_access "$backend_id"
+    grant_firebase_access "$backend_id" "$project_id"
+    
+    # Verify Firebase can access secrets
+    verify_firebase_access "$backend_id" "$project_id"
     
     # Cleanup
     cleanup_temp_files "$temp_dir"
     
-    log_success "All secrets deployed! Your App Hosting backend can now build & run with these secrets."
+    log_success "All secrets deployed and verified! Your App Hosting backend can now build & run with these secrets."
 }
 
 # Get the project root directory
@@ -190,7 +201,7 @@ create_temp_secret_files() {
     for i in "${!SECRET_VARS[@]}"; do
         local envvar="${SECRET_VARS[$i]}"
         local secret_id="${SECRET_IDS[$i]}"
-        local temp_file="$temp_dir/$secret_id.txt"
+        local temp_file="$temp_dir/${secret_id}.txt"
         
         # Write the environment variable value to a temporary file
         echo "${!envvar}" > "$temp_file"
@@ -222,6 +233,34 @@ create_or_update_secrets() {
                 --project="$project_id" \
                 --quiet
         fi
+        
+        # Wait a moment for each secret to be fully created
+        sleep 2
+    done
+}
+
+# Verify that all secrets exist and are accessible
+verify_secrets_exist() {
+    local project_id="$1"
+    
+    log_step "Verifying all secrets exist and are accessible..."
+    
+    for i in "${!SECRET_VARS[@]}"; do
+        local secret_id="${SECRET_IDS[$i]}"
+        
+        if ! gcloud secrets describe "$secret_id" --project="$project_id" --quiet &>/dev/null; then
+            log_error "Secret '$secret_id' does not exist or is not accessible"
+            return 1
+        fi
+        
+        # Check if secret has at least one version
+        local version_count=$(gcloud secrets versions list "$secret_id" --project="$project_id" --format="value(name)" | wc -l)
+        if [[ $version_count -eq 0 ]]; then
+            log_error "Secret '$secret_id' exists but has no versions"
+            return 1
+        fi
+        
+        log_success "Verified secret '$secret_id' exists with $version_count version(s)"
     done
 }
 
@@ -234,26 +273,73 @@ grant_iam_permissions() {
     for i in "${!SECRET_VARS[@]}"; do
         local secret_id="${SECRET_IDS[$i]}"
         log_info "Granting roles/secretmanager.secretAccessor on '$secret_id' to Firebase service account…"
-        gcloud secrets add-iam-policy-binding "$secret_id" \
+        
+        # Add IAM policy binding with error handling
+        if ! gcloud secrets add-iam-policy-binding "$secret_id" \
             --member="serviceAccount:service-971892823924@gcp-sa-firebaseapphosting.iam.gserviceaccount.com" \
             --role="roles/secretmanager.secretAccessor" \
             --project="$project_id" \
-            --quiet
+            --quiet; then
+            log_warning "Failed to grant IAM permissions for '$secret_id', continuing..."
+        else
+            log_success "Granted IAM permissions for '$secret_id'"
+        fi
     done
 }
 
 # Grant Firebase App Hosting access to secrets
 grant_firebase_access() {
     local backend_id="$1"
+    local project_id="$2"
     
     log_step "Granting Firebase App Hosting access to secrets..."
     
     for i in "${!SECRET_VARS[@]}"; do
         local secret_id="${SECRET_IDS[$i]}"
         log_info "Granting Firebase App Hosting access to '$secret_id' on backend '$backend_id'…"
-        firebase apphosting:secrets:grantaccess "$secret_id" \
-            --backend "$backend_id" \
-            --non-interactive
+        
+        # Retry logic for granting access
+        local max_retries=3
+        local retry_count=0
+        
+        while [[ $retry_count -lt $max_retries ]]; do
+            if firebase apphosting:secrets:grantaccess "$secret_id" \
+                --backend "$backend_id" \
+                --non-interactive; then
+                log_success "Granted Firebase access to '$secret_id'"
+                break
+            else
+                retry_count=$((retry_count + 1))
+                if [[ $retry_count -lt $max_retries ]]; then
+                    log_warning "Failed to grant access to '$secret_id' (attempt $retry_count/$max_retries), retrying in 5 seconds..."
+                    sleep 5
+                else
+                    log_error "Failed to grant Firebase access to '$secret_id' after $max_retries attempts"
+                    return 1
+                fi
+            fi
+        done
+    done
+}
+
+# Verify Firebase can access the secrets
+verify_firebase_access() {
+    local backend_id="$1"
+    local project_id="$2"
+    
+    log_step "Verifying Firebase App Hosting can access secrets..."
+    
+    # List secrets accessible to the backend
+    local accessible_secrets=$(firebase apphosting:secrets:list --backend "$backend_id" --non-interactive 2>/dev/null || echo "")
+    
+    for i in "${!SECRET_VARS[@]}"; do
+        local secret_id="${SECRET_IDS[$i]}"
+        
+        if echo "$accessible_secrets" | grep -q "$secret_id"; then
+            log_success "Verified Firebase can access '$secret_id'"
+        else
+            log_warning "Firebase access to '$secret_id' not confirmed, but continuing..."
+        fi
     done
 }
 

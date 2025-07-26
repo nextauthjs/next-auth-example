@@ -38,8 +38,10 @@ import memoryDriver from "unstorage/drivers/memory"
 import vercelKVDriver from "unstorage/drivers/vercel-kv"
 import { UnstorageAdapter } from "@auth/unstorage-adapter"
 
+// Use memory driver by default for Firebase App Hosting / Google Cloud Run
+// Switch to Vercel KV only if explicitly configured with the required env vars
 const storage = createStorage({
-  driver: process.env.VERCEL
+  driver: (process.env.AUTH_KV_REST_API_URL && process.env.AUTH_KV_REST_API_TOKEN)
     ? vercelKVDriver({
         url: process.env.AUTH_KV_REST_API_URL,
         token: process.env.AUTH_KV_REST_API_TOKEN,

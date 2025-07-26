@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "firebase:deploy": "/usr/bin/env bash scripts/firebase-deploy.sh"
   },
   "author": "Iain Collins <me@iaincollins.com>",
   "contributors": [

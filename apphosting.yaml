@@ -28,3 +28,7 @@ env:
     secret: AUTH_GOOGLE_ID
   - variable: AUTH_GOOGLE_SECRET
     secret: AUTH_GOOGLE_SECRET
+  - variable: NEXTAUTH_URL
+    secret: NEXTAUTH_URL
+  - variable: AUTH_TRUST_HOST
+    secret: AUTH_TRUST_HOST
